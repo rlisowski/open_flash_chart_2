@@ -256,4 +256,162 @@ module OFC2
       @type      = "line_hollow"
     end
   end
+  
+  
+  #area
+  class AreaHollow
+    def initialize(fill_alpha = 0.35, values = [])
+      @type      = "area_hollow"
+      @fill_alpha = fill_alpha
+      @values    = values
+    end
+    %w(width color values dot_size text font_size).each do |method| 
+      define_method("set_#{method}") do |a|
+        self.instance_variable_set("@#{method}", a)
+      end
+    end
+  end
+  
+  #bar
+    
+  class BarBase
+    def initialize (values = [], text = '', size = '10px')
+      @values = values
+      @text = text
+      @font_size = size
+    end
+    def set_key( text, size )
+      @text = text
+      @font_size = size
+    end
+    %w(alpha color values text font_size).each do |method| 
+      define_method("set_#{method}") do |a|
+        self.instance_variable_set("@#{method}", a)
+      end
+    end
+    def append_value( v )
+      @values << v		
+    end
+  end
+  class Bar < BarBase
+    def initialize()
+      @type      = "bar"
+    end
+  end
+  class Bar3dValue
+    def set_top(top = nil, color = '', tip = nil)
+      @top = top
+      @color = color
+      @tip = tip
+    end	
+    def set_top( top )
+      @top = top
+    end	
+    def set_colour( colour )
+      @colour = colour
+    end
+	
+    def set_tooltip( tip )
+      @tip = tip
+    end
+  end
+  class Bar3d < BarBase
+    def initialize()
+      @type      = "bar_3d"
+    end
+  end
+  
+  class BarGlassValue < Bar3dValue
+  end
+  class BarGlass < BarBase
+    def initialize()
+      @type      = "bar_glass"
+    end
+  end
+
+  
+  class BarSketch < BarBase
+    def bar_sketch( colour = '', outline_colour = '', fun_factor = '')
+      @type      = "bar_sketch"
+      set_colour( colour )
+      set_outline_colour( outline_colour )
+      @offset = fun_factor
+    end
+    %w(offset outline_color).each do |method| 
+      define_method("set_#{method}") do |a|
+        self.instance_variable_set("@#{method}", a)
+      end
+    end	
+  end
+  class BarStack < BarBase
+    def initialize
+      @type      = "bar_stack"
+    end
+    def append_stack( v )
+      append_value( v )
+    end
+  end
+  class BarStackValue
+    def initialize(val, colour)
+      @val = val
+      @colour = colour
+    end
+    %w(val color).each do |method| 
+      define_method("set_#{method}") do |a|
+        self.instance_variable_set("@#{method}", a)
+      end
+    end	
+  end
+  
+  class HbarValue
+    def initialize( left, right )
+      @left = left
+      @right = right
+    end
+    %w(left right).each do |method| 
+      define_method("set_#{method}") do |a|
+        self.instance_variable_set("@#{method}", a)
+      end
+    end
+  end
+  class Hbar
+    def initialize
+      @type      = "hbar"
+      @colour    = "#9933CC"
+      @text      = "Page views"
+      @font_size = '10px'
+      @values    = []
+    end
+    %w(colour text font_size values).each do |method| 
+      define_method("set_#{method}") do |a|
+        self.instance_variable_set("@#{method}", a)
+      end
+    end
+    def append_value( v )
+      @values << v		
+    end
+  end
+  
+  ########## pie
+  class PieValue
+    def initialize( value, text )
+      @value = value
+      @text = text
+    end
+  end
+
+  class Pie
+    def initialize
+      @type      		= 'pie'
+      @colours     		= ["#d01f3c","#356aa0","#C79810"]
+      @alpha			= 0.6
+      @border			= 2
+      @values			= [2,3, PieValue.new(6.5, "hello (6.5)")]
+    end
+    %w(colours alpha border values animate start_angle).each do |method| 
+      define_method("set_#{method}") do |a|
+        self.instance_variable_set("@#{method}", a)
+      end
+    end
+  end
 end

@@ -1,15 +1,11 @@
 %html{ html_attrs('en-us')}
-  %head{ :name => "WHC_DEMO"}
-    %title WHC_DEMO
+  %head{ :name => "Open Flash Chart 2 Rails Plugin"}
+    %title Open Flash Chart 2 Rails Plugin
     %meta{:'http-equiv'=>'Content-type', :content=>'text/html; charset=utf-8'}
     %meta{:name=>'Content-Language', :content=>'en-us'}
-    = stylesheet_link_tag "whc_demo" 
+    = stylesheet_link_tag "main" 
     = javascript_include_tag :defaults
-    //= javascript_include_tag 'mootools-beta.js'
-    = javascript_include_tag 'toogle.js'
     = javascript_include_tag 'swfobject.js'
   %body
-    %menu
-      menu
     %content
       = yield

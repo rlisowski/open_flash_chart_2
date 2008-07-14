@@ -8,6 +8,8 @@ class ChartExamplesController < ApplicationController
       <a href='/charts_ofc2/#{action_name}'>view data</a>
     </div>
       "
+      @name = action_name.gsub('_',' ')
+      render :action => "show"
   end
 end
 

@@ -1,0 +1,2 @@
+module PluginDocumentationHelper
+end

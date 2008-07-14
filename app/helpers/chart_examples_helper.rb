@@ -1,0 +1,2 @@
+module ChartExamplesHelper
+end

@@ -13,9 +13,9 @@ Clone it from github repository.
   #command
     cd vendor/plugins
   #comment
-    clone git repo
+    clone git repo to open_flash_chart_2 directory
   #command
-    git clone git://github.com/korin/open_flash_chart_2_plugin.git
+    git clone git://github.com/korin/open_flash_chart_2_plugin.git open_flash_chart_2
   #comment
     go to plugin
   #command
@@ -28,6 +28,11 @@ Clone it from github repository.
     cp swfobject.js ../../../public/javascripts
     %br
     cp -r json ../../../public/javascripts
+%br
+That's it, now You can use that plugin.
+%br
+See Charts section for examples. Read also README file from plugin directory for configuration and code example.
+%br
 #note
   Remember that plugin is using json.
   #code
@@ -35,8 +40,9 @@ Clone it from github repository.
       just install as gem
     #command
       sudo gem install json
+
 %hr
-  Grab whole sample application:
+  Grab sample application (this project site):
 #code
   #comment
     go to directory where you want create sample application
@@ -46,8 +52,10 @@ Clone it from github repository.
     customize database.yml
   #comment
     customize what you want ;)
-
-%hr
-That's all, now You can use that plugin.
-%br
-See Charts section for examples or Documentation for code documentation (rdoc).
+#note
+  Remember that application is using haml.
+  #code
+    #comment
+      just install as gem
+    #command
+      sudo gem install haml

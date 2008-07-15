@@ -1,3 +1,4 @@
+vendor/gems
 db/*.sqlite3
 data.dump
 db/data.yml

@@ -1,12 +1,12 @@
 There is no any download section!
 %br
-Clone it from github/gitorious repository.
+Clone it from github repository.
 #note
   You can clone main tree, or latest stable tag.
   %br
   See change log for more info abaut stable versions.
 %hr
-  Github repo:
+  Clone plugin:
 #code
   #comment
     go to plugins directory
@@ -15,7 +15,7 @@ Clone it from github/gitorious repository.
   #comment
     clone git repo
   #command
-    git clone git://github.com/korin/open_flash_chart_2.git
+    git clone git://github.com/korin/open_flash_chart_2_plugin.git
   #comment
     go to plugin
   #command
@@ -28,13 +28,24 @@ Clone it from github/gitorious repository.
     cp swfobject.js ../../../public/javascripts
     %br
     cp -r json ../../../public/javascripts
+#note
+  Remember that plugin is using json.
+  #code
+    #comment
+      just install as gem
+    #command
+      sudo gem install json
 %hr
-  Gitorious repo:
+  Grab whole sample application:
 #code
   #comment
-    do action like above, but change link to repo
+    go to directory where you want create sample application
   #command
-    git clone git://gitorious.org/open_flash_chart_2/mainline.git
+    git clone git://github.com/korin/open_flash_chart_2.git
+  #comment
+    customize database.yml
+  #comment
+    customize what you want ;)
 
 %hr
 That's all, now You can use that plugin.

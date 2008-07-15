@@ -1,1 +1,47 @@
-README ABAUT OPEN FLASH CHART 2 PLUGIN
+About
+=====================================
+open flash chart 2 sample application
+it's simple way to get working application with open flash chart 2 plugin.
+
+NOTE:
+sample application is using haml
+  gem install haml
+plugin is using json
+  gem install json
+
+Details
+=====================================
+Go to openflashchart2.sentor.pl for details
+
+Get sample application
+=====================================
+Grab whole sample application:
+go to directory where you want create sample application and run
+  git clone git://github.com/korin/open_flash_chart_2.git
+
+customize database.yml
+customize what you want ;)
+
+
+Install plugin
+=====================================
+get only plugin to existing application:
+go to plugins directory
+  cd vendor/plugins
+clone git repo
+  git clone git://github.com/korin/open_flash_chart_2_plugin.git
+go to plugin
+  cd open_flash_chart_2
+copy important files to public directory
+  cp open-flash-chart.swf ../../../public
+  cp swfobject.js ../../../public/javascripts
+  cp -r json ../../../public/javascripts
+
+Help
+=====================================
+Looking for help?
+try:
+google groups: http://groups.google.com/group/OpenFlashChart2
+or email to me: lisukorin@gmail.com,
+  don't forget write 'open flash chart' in subject or my mail client wil treat your message as spam.
+

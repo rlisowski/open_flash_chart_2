@@ -267,18 +267,30 @@ class ChartsOfc2Controller < ApplicationController
       data_1 << Math.sin(x) * 1.9
       x+=0.2
     end
+    #    data_2 = []
+    #    labels = []
+    #    x = 0
+    #    y = 360
+    #    while x<y
+    #      labels << x
+    #      data_2 << "%6.2f" % Math.sin(x/Math::RAD2DEG)
+    #      data_2 << "%6.2f" % Math.cos(x/Math::RAD2DEG)
+    #      x+=5
+    #    end
+    
     area = OFC2::AreaHollow.new(0.35, data_1)
     area.width= 1 
 
     x = OFC2::XAxis.new
     x.steps= 2
     x_labels = OFC2::XAxisLabels.new
-    x_labels.steps= 4
+    x_labels.steps= 5
     x_labels.set_vertical
+#    x.set_labels_from_array(labels)
     x.set_labels x_labels
     
     y = OFC2::YAxis.new
-    y.set_range( -2, 2, 2 )
+    y.set_range( -2, 2 )
     y.labels= nil
     y.set_offset false
     

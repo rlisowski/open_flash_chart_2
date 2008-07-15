@@ -19,6 +19,14 @@ body {
   #link a:hover {
     color: #000; }
 
+#header_text {
+  float: left;
+  min-height: 20px;
+  margin: 0px;
+  padding: 0px;
+  font-size: 25px;
+  color: #000; }
+
 #link_main {
   float: right;
   min-height: 20px;

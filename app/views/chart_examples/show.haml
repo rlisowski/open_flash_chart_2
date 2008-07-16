@@ -2,13 +2,8 @@
   = "#{@name} chart"
 
 = @graph
-
-
-#note
-  code viewer comming soon...
-%br
-For now You can grab this sample application and check <b>chart_examples_controller</b> and <b>chart_ofc2_controller</b>.
-%br
-Go to 
-= link_to 'Info/How download / install', {:controller=> :infos, :action => :install}
-to learn how to do that.
+//  %textarea{:name=>"code", :class=>"rails", :cols=>"300", :rows=>"20"}
+#code_example
+  %textarea{:name=>"code", :class=>'ruby', :cols=>"200", :rows=>"20"}
+    =@code
+  

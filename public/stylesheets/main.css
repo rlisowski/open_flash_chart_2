@@ -88,6 +88,11 @@ body {
   padding: 0px 5px 5px 30px;
   min-height: 20px; }
 
+#code_example {
+  float: left;
+  overflow: auto;
+  width: 100%; }
+
 #code {
   background-color: black;
   overflow: auto;

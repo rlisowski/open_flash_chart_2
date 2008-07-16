@@ -8,4 +8,6 @@ doc/api
 doc/app
 .svn
 *.tmp
+*_bak
+*~
 

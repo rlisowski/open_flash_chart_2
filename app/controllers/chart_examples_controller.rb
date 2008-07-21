@@ -16,9 +16,10 @@ class ChartExamplesController < ApplicationController
       @code += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ofc2(width, height, url, base='/', id = '')\r"
       @code += "&nbsp;&nbsp;@graph = ofc2(650,300, 'charts_ofc2/#{action_name}')\r\r"
       @code += "#in controller which is generating data for charts (for me it's charts_ofc2)"
-      File.read( "#{RAILS_ROOT}/public/code/charts_ofc2_controller.rb" ).scan(/(#{action_name}_begin)(.*)(##{action_name}_end)/m)
-      @code += $2.gsub!("\n","\r")
-      
+      if File.exist?("#{RAILS_ROOT}/public/code/charts_ofc2_controller.rb")
+        File.read( "#{RAILS_ROOT}/public/code/charts_ofc2_controller.rb" ).scan(/(#{action_name}_begin)(.*)(##{action_name}_end)/m)
+        @code += $2.gsub!("\n","\r")
+      end
       @code += "\r# display graph in view (haml)\r"
       @code += "&nbsp;&nbsp;=@graph\r"
       @code += "\r# display graph in view (html.erb)\r"

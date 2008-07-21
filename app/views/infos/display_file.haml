@@ -1,0 +1,9 @@
+=# javascript_include_tag 'syntaxHighlight/shBrushXml.js'
+= javascript_include_tag 'syntaxHighlight/shBrushChLog.js'
+#code_example
+  %textarea{:name=>"code", :class=>'chlog:nogutter:nocontrols', :cols=>"200", :rows=>"20"}
+    =@file
+<script language="javascript">
+dp.SyntaxHighlighter.ClipboardSwf = '/clipboard.swf';
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>

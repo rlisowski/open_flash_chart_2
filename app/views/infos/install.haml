@@ -1,33 +1,16 @@
-There is no any download section!
+= javascript_include_tag 'syntaxHighlight/shBrushBash.js'
+There is no download section!
 %br
 Clone it from github repository.
 #note
   You can clone main tree, or latest stable tag.
   %br
-  See change log for more info abaut stable versions.
+  See change log for more info about stable versions.
 %hr
   Clone plugin:
-#code
-  #comment
-    go to plugins directory
-  #command
-    cd vendor/plugins
-  #comment
-    clone git repo to open_flash_chart_2 directory
-  #command
-    git clone git://github.com/korin/open_flash_chart_2_plugin.git open_flash_chart_2
-  #comment
-    go to plugin
-  #command
-    cd open_flash_chart_2
-  #comment
-    copy important files to public directory
-  #command
-    cp open-flash-chart.swf ../../../public
-    %br
-    cp swfobject.js ../../../public/javascripts
-    %br
-    cp -r json ../../../public/javascripts
+#code_example
+  %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}
+    =@files[:install_plugin]
 %br
 That's it, now You can use that plugin.
 %br
@@ -35,27 +18,23 @@ See Charts section for examples. Read also README file from plugin directory for
 %br
 #note
   Remember that plugin is using json.
-  #code
-    #comment
-      just install as gem
-    #command
+  #code_example
+    %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}
+      \# just install as gem 
       sudo gem install json
-
 %hr
   Grab sample application (this project site):
-#code
-  #comment
-    go to directory where you want create sample application
-  #command
-    git clone git://github.com/korin/open_flash_chart_2.git
-  #comment
-    customize database.yml
-  #comment
-    customize what you want ;)
+#code_example
+  %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}
+    =@files[:install_sample_app]
 #note
   Remember that application is using haml.
-  #code
-    #comment
-      just install as gem
-    #command
+  #code_example
+    %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}
+      \# just install as gem
       sudo gem install haml
+
+<script language="javascript">
+dp.SyntaxHighlighter.ClipboardSwf = '/clipboard.swf';
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>

@@ -1,7 +1,6 @@
 /**
- *  Author: Saúl Martínez Vidals
- *  http://buglog-saul.blogspot.com/
- *
+ *  Author: Lisowski Rafał
+ *  created: 2008-06-28
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, version 3 of the License.
@@ -15,30 +14,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Changes by Fred Wu:
- *
- * [2008-06-28]
- * + added 'GetKeywords_without' to the shCore.js file to fix Bash keywords and variables conflict
- *
- * Changes by Lisowski Rafał:
- *
- * [2008-07-21]
- * + added exclude keywords and normal style
- */
-dp.sh.Brushes.Bash = function()
+dp.sh.Brushes.Log = function()
 {
-    var builtins =  'alias bg bind break builtin cd command compgen complete continue ' +
-                    'declare dirs disown echo enable eval exec exit export fc fg ' +
-                    'getopts hash help history jobs kill let local logout popd printf ' +
-                    'pushd pwd read readonly return set shift shopt source ' +
-                    'suspend test times trap type typeset ulimit umask unalias unset wait ' +
-                    'sudo gem install git clone cp rake';
-
-    var keywords =  'case do done elif else esac fi for function if in select then ' +
-                    'haml json open_flash_chart_2:install';
+    var builtins =  '[(0-9)*] - beta beta-. alpha alpha-. stable stable-.';
+    
+    var keywords =  'itscantbeempty';
                   
-    var exclude =  'time until while .git git:';
+    var exclude =  'itscantbeempty';
 
     this.regexList = [
                     /* cometarios */
@@ -53,6 +35,8 @@ dp.sh.Brushes.Bash = function()
                     {regex: new RegExp('\\w+=', 'g'), css: 'vars'},
                     /* banderas */
                     {regex: new RegExp('\\s-\\w+', 'g'), css: 'flag'},
+                    /* headers */
+                    {regex: new RegExp('==[a-zA-Z0-9 ]*==', 'g'), css: 'header'},
                     /* builtins */
                     {regex: new RegExp(this.GetKeywords(builtins), 'gm'), css: 'builtin'},
                     {regex: new RegExp(this.GetKeywords(keywords), 'gm'), css: 'keyword'},
@@ -69,9 +53,10 @@ dp.sh.Brushes.Bash = function()
                     '.dp-bash .flag {color: green;}' +
                     '.dp-bash .string {color: red;}' +
                     '.dp-bash .vars {color: blue;}' +
+                    '.dp-bash .header {color: black;font-weight: bold;}' +
                     '.dp-bash .normal';
 
 }
 
-dp.sh.Brushes.Bash.prototype = new dp.sh.Highlighter();
-dp.sh.Brushes.Bash.Aliases = ['bash', 'sh'];
+dp.sh.Brushes.Log.prototype = new dp.sh.Highlighter();
+dp.sh.Brushes.Log.Aliases = ['chlog', 'todo', 'changelog'];

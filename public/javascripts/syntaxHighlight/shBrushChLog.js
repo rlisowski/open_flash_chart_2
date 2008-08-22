@@ -18,10 +18,6 @@ dp.sh.Brushes.Log = function()
 {
     var builtins =  '[(0-9)*] - beta beta-. alpha alpha-. stable stable-.';
     
-    var keywords =  'itscantbeempty';
-                  
-    var exclude =  'itscantbeempty';
-
     this.regexList = [
                     /* cometarios */
                     {regex: dp.sh.RegexLib.SingleLinePerlComments, css: 'comment'},
@@ -37,10 +33,10 @@ dp.sh.Brushes.Log = function()
                     {regex: new RegExp('\\s-\\w+', 'g'), css: 'flag'},
                     /* headers */
                     {regex: new RegExp('==[a-zA-Z0-9 ]*==', 'g'), css: 'header'},
+                    {regex: new RegExp('--[a-zA-Z0-9 ]*--', 'g'), css: 'line-through'},
+                    {regex: new RegExp('__[a-zA-Z0-9 ]*__', 'g'), css: 'underline'},
                     /* builtins */
-                    {regex: new RegExp(this.GetKeywords(builtins), 'gm'), css: 'builtin'},
-                    {regex: new RegExp(this.GetKeywords(keywords), 'gm'), css: 'keyword'},
-                    {regex: new RegExp(this.GetKeywords(exclude), 'gm'), css: 'normal'}
+                    {regex: new RegExp(this.GetKeywords(builtins), 'gm'), css: 'builtin'}
                     /* palabras reservadas */
                     /*{regex: new RegExp(this.GetKeywords_without(keywords, '='), 'gm'), css: 'keyword'}*/
                     ];
@@ -54,6 +50,8 @@ dp.sh.Brushes.Log = function()
                     '.dp-bash .string {color: red;}' +
                     '.dp-bash .vars {color: blue;}' +
                     '.dp-bash .header {color: black;font-weight: bold;}' +
+                    '.dp-bash .line-through {text-decoration: line-through;}' +
+                    '.dp-bash .underline {text-decoration: underline;}' +
                     '.dp-bash .normal';
 
 }

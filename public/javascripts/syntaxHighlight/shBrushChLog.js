@@ -32,9 +32,9 @@ dp.sh.Brushes.Log = function()
                     /* banderas */
                     {regex: new RegExp('\\s-\\w+', 'g'), css: 'flag'},
                     /* headers */
-                    {regex: new RegExp('==[a-zA-Z0-9 ]*==', 'g'), css: 'header'},
-                    {regex: new RegExp('--[a-zA-Z0-9 ]*--', 'g'), css: 'line-through'},
-                    {regex: new RegExp('__[a-zA-Z0-9 ]*__', 'g'), css: 'underline'},
+                    {regex: new RegExp('==[a-zA-Z0-9 _]*==', 'g'), css: 'header'},
+                    {regex: new RegExp('--[a-zA-Z0-9 _]*--', 'g'), css: 'line-through'},
+                    {regex: new RegExp('__[a-zA-Z0-9 _]*__', 'g'), css: 'underline'},
                     /* builtins */
                     {regex: new RegExp(this.GetKeywords(builtins), 'gm'), css: 'builtin'}
                     /* palabras reservadas */

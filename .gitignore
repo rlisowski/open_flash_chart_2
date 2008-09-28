@@ -10,4 +10,4 @@ doc/app
 *.tmp
 *_bak
 *~
-
+vendor/plugins/open_flash_chart*

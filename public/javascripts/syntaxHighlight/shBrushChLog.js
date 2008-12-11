@@ -16,7 +16,7 @@
 
 dp.sh.Brushes.Log = function()
 {
-    var builtins =  '[(0-9)*] - beta beta-. alpha alpha-. stable stable-.';
+    var builtins =  '[(0-9)*] - beta beta-. alpha alpha-. stable stable-. rc rc-.';
     
     this.regexList = [
                     /* cometarios */

@@ -4,21 +4,6 @@ body {
   margin: 0px;
   font-family: verdana; }
 
-#link {
-  width: 100px;
-  min-height: 20px;
-  border-bottom-style: solid;
-  border-width: 1px;
-  border-color: blue;
-  margin: 5px;
-  padding: 5px;
-  font-weight: bold;
-  color: #000; }
-  #link a {
-    color: #999; }
-  #link a:hover {
-    color: #000; }
-
 #header_text {
   float: left;
   min-height: 20px;
@@ -41,7 +26,7 @@ body {
     color: #000; }
 
 #site {
-  padding: 5px;
+  padding: 0;
   margin: 0px auto;
   width: 800px;
   height: 100%;
@@ -49,27 +34,72 @@ body {
   text-align: left; }
   #site #top_menu {
     float: right;
-    margin: 0px;
+    margin: 0;
     padding: 5px;
-    width: 790px;
+    width: 100%;
     height: 30px;
     float: left;
     border-bottom-style: solid;
     border-width: 2px;
     border-color: blue; }
   #site #left_menu {
-    margin: 2px;
-    padding: 0px;
-    height: 100%;
-    width: 100px;
+    margin: 0;
+    padding: 0;
+    width: 130px;
     float: left;
     text-align: left; }
+    #site #left_menu .elements {
+      float: left;
+      margin: 0;
+      padding: 0; }
+      #site #left_menu .elements #link {
+        clear: both;
+        min-height: 20px !important;
+        height: auto !important;
+        height: 20px;
+        border-style: none;
+        margin: 5px 0;
+        padding: 5px;
+        font-weight: bold;
+        color: #000;
+        width: 120px; }
+        #site #left_menu .elements #link a {
+          color: #999; }
+        #site #left_menu .elements #link a:hover {
+          color: #000; }
+    #site #left_menu #link {
+      float: left;
+      min-height: 20px !important;
+      height: auto !important;
+      height: 20px;
+      border-style: none;
+      margin: 5px 0;
+      padding: 5px;
+      font-weight: bold;
+      color: #000;
+      width: 120px; }
+      #site #left_menu #link a {
+        color: #999; }
+      #site #left_menu #link a:hover {
+        color: #000; }
+    #site #left_menu #link.header {
+      float: left;
+      min-height: 20px !important;
+      height: auto !important;
+      height: 20px;
+      border-style: none;
+      margin: 5px 0;
+      padding: 5px;
+      font-weight: bold;
+      color: #000;
+      background-color: #BBB;
+      cursor: pointer;
+      width: 120px; }
   #site #content {
-    margin: 2px;
-    padding: 20px;
-    height: 100%;
+    margin: 0;
+    padding: 5px;
     width: 650px;
-    float: left;
+    float: right;
     color: #000; }
 
 #info_link {

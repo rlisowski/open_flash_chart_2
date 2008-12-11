@@ -10,20 +10,27 @@ class ChartExamplesController < ApplicationController
         </div>
       "
       @name = action_name.gsub('_',' ')
-      @code = "# include js file on site\r"
-      @code += "&nbsp;&nbsp;= javascript_include_tag 'swfobject.js'\r\r"
-      @code += "# in controller\r"
-      @code += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ofc2(width, height, url, base='/', id = '')\r"
-      @code += "&nbsp;&nbsp;@graph = ofc2(650,300, 'charts_ofc2/#{action_name}')\r\r"
-      @code += "#in controller which is generating data for charts (for me it's charts_ofc2)"
       if File.exist?("#{RAILS_ROOT}/public/code/charts_ofc2_controller.rb")
         File.read( "#{RAILS_ROOT}/public/code/charts_ofc2_controller.rb" ).scan(/(#{action_name}_begin)(.*)(##{action_name}_end)/m)
-        @code += $2.gsub!("\n","\r") if $2
+        method_code =  $2 if $2
       end
-      @code += "\r# display graph in view (haml)\r"
-      @code += "&nbsp;&nbsp;=@graph\r"
-      @code += "\r# display graph in view (html.erb)\r"
-      @code += "&nbsp;&nbsp;<%=@graph%>\r"
+      @code =<<EOF
+# include js file on site
+  = javascript_include_tag 'swfobject.js'
+
+# in controller
+          #ofc2(width, height, url, base='/', id = '')
+  @graph = ofc2(650,300, 'charts_ofc2/#{action_name}')
+
+#in controller which is generating data for charts (for me it's charts_ofc2)
+  #{method_code}
+
+# display graph in view (haml)
+  =@graph
+
+# display graph in view (html.erb)
+  <%=@graph%>
+EOF
       render :action => "show"
     end
   end
@@ -47,17 +54,29 @@ class ChartExamplesController < ApplicationController
     @graph = ofc2_inline(650,300,chart,'/','inline_line')
 
     @name = action_name.gsub('_',' ')
-    @code = "# include js file on site\r"
-    @code += "&nbsp;&nbsp;= javascript_include_tag 'swfobject.js'\r\r"
-    @code += "# in controller"
+
     if File.exist?("#{RAILS_ROOT}/public/code/charts_ofc2_inline_controller.rb")
       File.read( "#{RAILS_ROOT}/public/code/charts_ofc2_inline_controller.rb" ).scan(/(#{action_name}_begin)(.*)(##{action_name}_end)/m)
-      @code += $2.gsub!("\n","\r") if $2
+      method_code = $2 if $2
     end
-    @code += "\r# display graph in view (haml)\r"
-    @code += "&nbsp;&nbsp;=@graph\r"
-    @code += "\r# display graph in view (html.erb)\r"
-    @code += "&nbsp;&nbsp;<%=@graph%>\r"
+    @code =<<EOF
+# include js file on site
+  = javascript_include_tag 'swfobject.js'
+
+# in controller
+          #ofc2(width, height, url, base='/', id = '')
+  @graph = ofc2(650,300, 'charts_ofc2/#{action_name}')
+
+#in controller which is generating data for charts (for me it's charts_ofc2)
+  #{method_code}
+
+# display graph in view (haml)
+  =@graph
+
+# display graph in view (html.erb)
+  <%=@graph%>
+EOF
+
     render :action => "show"
   end
   def inline_many_line
@@ -82,19 +101,29 @@ class ChartExamplesController < ApplicationController
     @graph += ofc2_inline(650,300,chart,'/','inline_line_2')
 
     @name = action_name.gsub('_',' ')
-    @code = "# include js file on site\r"
-    @code += "&nbsp;&nbsp;= javascript_include_tag 'swfobject.js'\r\r"
-    @code += "# in controller"
     if File.exist?("#{RAILS_ROOT}/public/code/charts_ofc2_inline_controller.rb")
       File.read( "#{RAILS_ROOT}/public/code/charts_ofc2_inline_controller.rb" ).scan(/(#{action_name}_begin)(.*)(##{action_name}_end)/m)
-      @code += $2.gsub!("\n","\r") if $2
+      method_code = $2 if $2
     end
-    @code += "\r# display graph in view (haml)\r"
-    @code += "&nbsp;&nbsp;=@graph\r"
-    @code += "&nbsp;&nbsp;=@graph2\r"
-    @code += "\r# display graph in view (html.erb)\r"
-    @code += "&nbsp;&nbsp;<%=@graph%>\r"
-    @code += "&nbsp;&nbsp;<%=@graph2%>\r"
+    @code =<<EOF
+# include js file on site
+  = javascript_include_tag 'swfobject.js'
+
+# in controller
+          #ofc2(width, height, url, base='/', id = '')
+  @graph = ofc2(650,300, 'charts_ofc2/#{action_name}')
+
+#in controller which is generating data for charts (for me it's charts_ofc2)
+  #{method_code}
+
+# display graph in view (haml)
+  =@graph
+  =@graph2
+
+# display graph in view (html.erb)
+  <%=@graph%>
+  <%=@graph2%>
+EOF
     render :action => "show"
   end
 end

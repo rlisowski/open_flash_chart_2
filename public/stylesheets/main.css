@@ -30,9 +30,7 @@ body {
 #link_main {
   float: right;
   min-height: 20px;
-  border-bottom-style: solid;
-  border-width: 1px;
-  border-color: blue;
+  border-style: none;
   margin: 5px;
   padding: 5px;
   font-weight: bold;

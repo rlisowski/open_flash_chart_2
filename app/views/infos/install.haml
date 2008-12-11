@@ -9,8 +9,7 @@ Clone it from github repository.
 %hr
   Clone plugin:
 #code_example
-  %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}
-    =@files[:install_plugin]
+  %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}=@files[:install_plugin]
 %br
 That's it, now You can use that plugin.
 %br
@@ -19,20 +18,17 @@ See Charts section for examples. Read also README file from plugin directory for
 #note
   Remember that plugin is using json.
   #code_example
-    %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}
-      \# just install as gem 
-      sudo gem install json
+    - _code = "\# just install as gem \n sudo gem install json"
+    %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}= _code
 %hr
   Grab sample application (this project site):
 #code_example
-  %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}
-    =@files[:install_sample_app]
+  %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}=@files[:install_sample_app]
 #note
   Remember that application is using haml.
   #code_example
-    %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}
-      \# just install as gem
-      sudo gem install haml
+    - _code = "\# just install as gem \n  sudo gem install haml"
+    %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}= _code
 
 <script language="javascript">
 dp.SyntaxHighlighter.ClipboardSwf = '/clipboard.swf';

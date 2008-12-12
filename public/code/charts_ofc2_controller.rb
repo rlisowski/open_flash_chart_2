@@ -414,5 +414,63 @@ class ChartsOfc2Controller < ApplicationController
     render :text => chart.render
   end
   #mix_line_bar_end
+  #mix_advanced_tooltip_begin
+  def mix_advanced_tooltip
+    title = OFC2::Title.new( 'All Campaigns ' + DateTime.now.strftime('%Y'), "{font-size: 14px; color: #b50F0F; text-align: center;}")
 
+    line_dot = OFC2::LineDot.new
+    line_dot.set_tip('#val#<br>Your text here for line')
+    line_dot.text= 'actual sales'
+    line_dot.font_size= '12'
+    line_dot.colour= '#FF0000'
+    line_dot.dot_size= 5
+
+    bar = OFC2::Bar.new
+    bar.set_tip('#val#<br>Your text here for bar')
+    bar.text= 'forecast sales'
+    line_dot.font_size= '12'
+    bar.colour= '#00FF00'
+
+    line_values= []
+    bar_values= []
+    max = 12
+
+    0.upto(max) do |i|
+      actual_sales = rand(i)
+      forecast_sales = rand(i)
+
+      _tooltip = "Summer Sales Blitz<br>actual sales: #{actual_sales}<br>forecast sales:#{forecast_sales}"
+
+      line_values << OFC2::DotValue.new(actual_sales, '#FF0000', _tooltip)
+      bar_values << OFC2::Value.new(forecast_sales, '#00FF00', _tooltip)
+    end
+
+    line_dot.values= line_values
+    bar.values= bar_values
+
+    chart = OFC2::Graph.new
+    chart.title= title
+    chart << line_dot
+    chart << bar
+
+    tooltip = OFC2::Tooltip.new
+    tooltip.hover
+    tooltip.stroke=5
+    tooltip.shadow=true
+    tooltip.colour="#e2ff60"
+    tooltip.background_colour="#FFFFFF"
+    tooltip.title="{font-size: 14px; font-weight: bold; color: #000000;}"
+    tooltip.body="{font-size: 10px; font-weight: bold; color: #707070;}"
+
+    chart.tooltip = tooltip
+
+    y = OFC2::YAxis.new
+    y.set_range(0, max, max/2)
+    chart.y_axis= y
+
+    chart.bg_colour= '#FFFFFF'
+
+    render :text => chart.render
+  end
+  #mix_advanced_tooltip_end
 end

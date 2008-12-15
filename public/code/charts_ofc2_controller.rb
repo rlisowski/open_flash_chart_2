@@ -493,7 +493,8 @@ class ChartsOfc2Controller < ApplicationController
 
     line_values= []
     bar_values= []
-    labels = []
+    x_labels_text = []
+    y_labels_text = []
     max = 12
 
     0.upto(max) do |i|
@@ -501,7 +502,8 @@ class ChartsOfc2Controller < ApplicationController
       forecast_sales = rand(i)
       line_values << OFC2::DotValue.new(actual_sales, '#FF0000', "actual sales: #{actual_sales}")
       bar_values << OFC2::Value.new(forecast_sales, '#00FF00', "forecast sales:#{forecast_sales}")
-      labels << "label #{i}"
+      x_labels_text << "label #{i}"
+      y_labels_text << "y label #{i}"
     end
 
     line_dot.values= line_values
@@ -516,11 +518,11 @@ class ChartsOfc2Controller < ApplicationController
     x_labels.colour = '#FF2ACB'
     x_labels.size = 12
 
-    labels[7] = OFC2::XAxisLabel.new('7', '#0000FF', 20)
-    labels[8] = OFC2::XAxisLabel.new('eight', '#8C773E', 16)
-    labels[9] = OFC2::XAxisLabel.new('nine',  '#2683CF', 14)
+    x_labels_text[7] = OFC2::XAxisLabel.new('7', '#0000FF', 20)
+    x_labels_text[8] = OFC2::XAxisLabel.new('eight', '#8C773E', 16)
+    x_labels_text[9] = OFC2::XAxisLabel.new('nine',  '#2683CF', 14)
 
-    x_labels.labels= labels
+    x_labels.labels= x_labels_text
 
     x = OFC2::XAxis.new
     x.set_3d 1
@@ -538,8 +540,15 @@ class ChartsOfc2Controller < ApplicationController
     y_legend.style= '{font-size: 20px; color: #778877}'
 
     y_axis = OFC2::YAxis.new
-    y_axis.set_range(0, max, max/2)
-
+    #    y_axis.set_range(0, max, max/2)
+    y_axis.stroke= 3
+    #    y_axis.colour= '#D7E4A3'
+    y_axis.colour= '#AAAA00'
+    #    y_axis.grid_colour= '#A2ACBA'
+    y_axis.grid_colour= '#00FFF0'
+    y_axis.tick_length= 20
+    y_axis.steps= 2
+    y_axis.labels= y_labels_text
 
     chart = OFC2::Graph.new
     chart.title= title
@@ -548,16 +557,10 @@ class ChartsOfc2Controller < ApplicationController
     chart.x_legend=x_legend
     chart.y_legend=y_legend
     chart.y_axis= y_axis
-
+    chart.bg_colour= '#FFFFFF'
 
     chart << line_dot
     chart << bar
-
-
-
-
-
-    chart.bg_colour= '#FFFFFF'
 
     render :text => chart.render
   end

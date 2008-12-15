@@ -475,7 +475,7 @@ class ChartsOfc2Controller < ApplicationController
   end
   #mix_advanced_tooltip_end
 
-  #mix_advanced_labels_begin
+  #mix_advanced_legends_begin
   def mix_advanced_legends
     title = OFC2::Title.new( 'All Campaigns ' + DateTime.now.strftime('%Y'), "{font-size: 14px; color: #b50F0F; text-align: center;}")
 
@@ -511,7 +511,7 @@ class ChartsOfc2Controller < ApplicationController
 
     x_labels = OFC2::XAxisLabels.new
     x_labels.steps= 1
-#    x_labels.rotate= 'vertical'
+    #    x_labels.rotate= 'vertical'
     x_labels.rotate= 'diagonal'
     #    x_labels.colour = '#A2ACBA'
     x_labels.colour = '#FF2ACB'
@@ -562,5 +562,5 @@ class ChartsOfc2Controller < ApplicationController
 
     render :text => chart.render
   end
-  #mix_advanced_labels_end
+  #mix_advanced_legends_end
 end

@@ -45,17 +45,19 @@
       = link_to "Scatter", { :controller=>'chart_examples', :action => "scatter" }
 
   #link.header
-    Mix charts
-  .elements
-    #link
-      = link_to "Line and Bar", { :controller=>'chart_examples', :action => "mix_line_bar" }
-    #link
-      = link_to "Advanced Tooltip", { :controller=>'chart_examples', :action => "mix_advanced_tooltip" }
-
-  #link.header
     Inline charts
   .elements
     #link
       = link_to "Line", { :controller=>'chart_examples', :action => "inline_line" }
     #link
       = link_to "Many charts", { :controller=>'chart_examples', :action => "inline_many_line" }
+
+  #link.header
+    Advanced
+  .elements
+    #link
+      = link_to "Line and Bar", { :controller=>'chart_examples', :action => "mix_line_bar" }
+    #link
+      = link_to "Tooltip", { :controller=>'chart_examples', :action => "mix_advanced_tooltip" }
+    #link
+      = link_to "Legends & Labels", { :controller=>'chart_examples', :action => "mix_advanced_legends" }

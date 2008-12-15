@@ -474,4 +474,93 @@ class ChartsOfc2Controller < ApplicationController
     render :text => chart.render
   end
   #mix_advanced_tooltip_end
+
+  #mix_advanced_labels_begin
+  def mix_advanced_legends
+    title = OFC2::Title.new( 'All Campaigns ' + DateTime.now.strftime('%Y'), "{font-size: 14px; color: #b50F0F; text-align: center;}")
+
+    line_dot = OFC2::LineDot.new
+    line_dot.set_tip('#val#<br>Your text here for line')
+    line_dot.text= 'actual sales'
+    line_dot.font_size= '12'
+    line_dot.colour= '#FF0000'
+    line_dot.dot_size= 5
+
+    bar = OFC2::Bar.new
+    bar.set_tip('#val#<br>Your text here for bar')
+    bar.text= 'forecast sales'
+    line_dot.font_size= '12'
+    bar.colour= '#00FF00'
+
+    line_values= []
+    bar_values= []
+    labels = []
+    max = 12
+
+    0.upto(max) do |i|
+      actual_sales = rand(i)
+      forecast_sales = rand(i)
+      line_values << OFC2::DotValue.new(actual_sales, '#FF0000', "actual sales: #{actual_sales}")
+      bar_values << OFC2::Value.new(forecast_sales, '#00FF00', "forecast sales:#{forecast_sales}")
+      labels << "label #{i}"
+    end
+
+    line_dot.values= line_values
+    bar.values= bar_values
+
+
+    x_labels = OFC2::XAxisLabels.new
+    x_labels.steps= 1
+#    x_labels.rotate= 'vertical'
+    x_labels.rotate= 'diagonal'
+    #    x_labels.colour = '#A2ACBA'
+    x_labels.colour = '#FF2ACB'
+    x_labels.size = 12
+
+    labels[7] = OFC2::XAxisLabel.new('7', '#0000FF', 20)
+    labels[8] = OFC2::XAxisLabel.new('eight', '#8C773E', 16)
+    labels[9] = OFC2::XAxisLabel.new('nine',  '#2683CF', 14)
+
+    x_labels.labels= labels
+
+    x = OFC2::XAxis.new
+    x.set_3d 1
+    x.colour= '#D7E4A3'
+    x.grid_colour= '#A7E4A3'
+    x.offset= true
+    x.steps=4
+    # Add the X Axis Labels to the X Axis
+    x.labels= x_labels
+
+    x_legend = OFC2::XLegend.new( "labels from 0 to #{max}" )
+    x_legend.style= '{font-size: 20px; color: #FF8877}'
+
+    y_legend = OFC2::YLegend.new( "Y description" )
+    y_legend.style= '{font-size: 20px; color: #778877}'
+
+    y_axis = OFC2::YAxis.new
+    y_axis.set_range(0, max, max/2)
+
+
+    chart = OFC2::Graph.new
+    chart.title= title
+
+    chart.x_axis= x
+    chart.x_legend=x_legend
+    chart.y_legend=y_legend
+    chart.y_axis= y_axis
+
+
+    chart << line_dot
+    chart << bar
+
+
+
+
+
+    chart.bg_colour= '#FFFFFF'
+
+    render :text => chart.render
+  end
+  #mix_advanced_labels_end
 end

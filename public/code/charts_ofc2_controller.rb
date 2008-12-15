@@ -436,8 +436,8 @@ class ChartsOfc2Controller < ApplicationController
     max = 12
 
     0.upto(max) do |i|
-      actual_sales = rand(i)
-      forecast_sales = rand(i)
+      actual_sales = rand(max)
+      forecast_sales = rand(max)
 
       _tooltip = "Summer Sales Blitz<br>actual sales: #{actual_sales}<br>forecast sales:#{forecast_sales}"
 
@@ -498,8 +498,8 @@ class ChartsOfc2Controller < ApplicationController
     max = 12
 
     0.upto(max) do |i|
-      actual_sales = rand(i)
-      forecast_sales = rand(i)
+      actual_sales = rand(max)
+      forecast_sales = rand(max)
       line_values << OFC2::DotValue.new(actual_sales, '#FF0000', "actual sales: #{actual_sales}")
       bar_values << OFC2::Value.new(forecast_sales, '#00FF00', "forecast sales:#{forecast_sales}")
       x_labels_text << "label #{i}"

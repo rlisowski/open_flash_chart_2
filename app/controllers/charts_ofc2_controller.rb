@@ -273,6 +273,12 @@ class ChartsOfc2Controller < ApplicationController
     bar << [2, 2, 2, 2, OFC2::BarStackValue.new(2, '#ff00ff')]
     bar.colour= '#00FF00'
 
+    keys = []
+    keys << OFC2::BarStackKey.new( '#ff0000', 'red', 13 )
+    keys << OFC2::BarStackKey.new( '#ff00ff', 'pink', 13 )
+    keys << OFC2::BarStackKey.new( '#00FF00', 'green', 13 )
+    bar.set_keys keys
+
     x = OFC2::XAxis.new
     x.set_labels_from_array ['a', 'b', 'c', 'd']
 
@@ -482,7 +488,7 @@ class ChartsOfc2Controller < ApplicationController
     line_dot = OFC2::LineDot.new
     line_dot.set_tip('#val#<br>Your text here for line')
     line_dot.text= 'actual sales'
-    line_dot.font_size= '12'
+    line_dot.font_size= 12
     line_dot.colour= '#FF0000'
     line_dot.dot_size= 5
 
@@ -566,4 +572,116 @@ class ChartsOfc2Controller < ApplicationController
     render :text => chart.render
   end
   #mix_advanced_legends_end
+
+  #mix_advanced_many_hbar_begin
+  def mix_advanced_many_hbar
+
+    bar = OFC2::HBar.new
+    bar.values= [OFC2::HBarValue.new(0, 4,'schedule: 2 actual: 3'),OFC2::HBarValue.new(0, 2,'schedule: 2 actual: 3')]
+    bar.colour= '#FEC13F'
+    bar.text = 'actual'
+
+    bar2 = OFC2::HBar.new
+    bar2.values= [OFC2::HBarValue.new(0, 3,'schedule: 2 actual: 3')]
+    bar2.colour= '#FF0000'
+    bar2.text = 'schedule'
+
+    bar3 = OFC2::HBar.new
+    bar3.values= [OFC2::HBarValue.new(0, 5,'schedule: 2 actual: 3')]
+    bar3.colour= '#0000FF'
+
+
+    x = OFC2::XAxis.new
+    arr = []
+    5.downto(0) do |i|
+      arr << ''
+    end
+    x.labels_from_array= arr
+
+    y = OFC2::YAxis.new
+    y.set_offset true
+        y.set_labels [""]
+
+    chart = OFC2::Graph.new
+    chart.title= OFC2::Title.new( DateTime.now.strftime('%Y-%m-%d %H:%M'))
+    chart << bar3
+    chart << bar
+    chart << bar2
+    chart.x_axis= x
+    chart.y_axis= y
+    render :text => chart.render
+  end
+  #mix_advanced_many_hbar_end
+
+  #mix_advanced_shapes_begin
+  def mix_advanced_shapes
+
+    # add line beause we can't set text and font_size for shape
+    # notice there is empty values table
+    line = OFC2::Line.new('schedule', 10, [], '#FF0000')
+
+    bar = OFC2::HBar.new
+    bar.values= [OFC2::HBarValue.new(0, 5,'schedule: 2 actual: 3')]
+    bar.colour= '#FEC13F'
+    bar.text = 'actual'
+
+    shape = OFC2::Shape.new('#FF0000')
+    shape << OFC2::ShapePoint.new(0.0,-0.4)
+    shape << OFC2::ShapePoint.new(0.0,0.4)
+    shape << OFC2::ShapePoint.new(2.0,0.4)
+    shape << OFC2::ShapePoint.new(2.0,-0.4)
+
+    x = OFC2::XAxis.new
+    arr = []
+    5.downto(0) do |i|
+      arr << ''
+    end
+    x.labels_from_array= arr
+
+    y = OFC2::YAxis.new
+    y.set_offset true
+    y.set_labels ["y_label"]
+
+    chart = OFC2::Graph.new
+    chart.title= OFC2::Title.new( DateTime.now.strftime('%Y-%m-%d %H:%M'))
+    chart << bar
+    chart << shape
+    chart << line
+    chart.x_axis= x
+    chart.y_axis= y
+    render :text => chart.render
+  end
+  #mix_advanced_shapes_end
+
+  #mix_advanced_draw_shape_begin
+  def mix_advanced_draw_shape
+
+
+    shape = OFC2::Shape.new('#FF0000')
+    shape << OFC2::ShapePoint.new(1, -0.3)
+    shape << OFC2::ShapePoint.new(2, 0)
+    shape << OFC2::ShapePoint.new(3, 0.3)
+    shape << OFC2::ShapePoint.new(4, -0.3)
+    shape << OFC2::ShapePoint.new(5, 0)
+
+    x = OFC2::XAxis.new
+    arr = []
+    5.downto(0) do |i|
+      arr << ''
+    end
+    x.labels_from_array= arr
+
+    y = OFC2::YAxis.new
+    y.set_offset true
+    y.set_labels ["y_label"]
+
+    chart = OFC2::Graph.new
+    chart.title= OFC2::Title.new( DateTime.now.strftime('%Y-%m-%d %H:%M'))
+    chart << shape
+    chart.x_axis= x
+    chart.y_axis= y
+    render :text => chart.render
+  end
+  #mix_advanced_draw_shape_end
+
 end

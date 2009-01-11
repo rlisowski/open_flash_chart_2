@@ -11,8 +11,11 @@
     = javascript_include_tag 'swfobject'
     = javascript_include_tag 'syntaxHighlight/shCore.js'
     = javascript_include_tag 'syntaxHighlight/shBrushRuby.js'
-    = javascript_include_tag 'mootools.js'
-    = javascript_include_tag 'examples_accordion.js'
+    //= javascript_include_tag 'mootools.js'
+    //= javascript_include_tag 'examples_accordion.js'
+    = javascript_include_tag 'mootools-1.2.1-core-yc.js'
+    = javascript_include_tag 'mootools-1.2-more.js'
+    = javascript_include_tag 'accordion.js'
   %body
     #site
       =render :partial => 'share/main_menu'

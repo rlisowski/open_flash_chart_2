@@ -87,7 +87,9 @@ body {
       min-height: 20px !important;
       height: auto !important;
       height: 20px;
-      border-style: none;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #BBB;
       margin: 5px 0;
       padding: 5px;
       font-weight: bold;

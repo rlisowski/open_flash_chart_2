@@ -1,32 +1,40 @@
 = javascript_include_tag 'syntaxHighlight/shBrushBash.js'
-There is no download section!
+You can download any project tag from github site:
 %br
-Clone it from github repository.
-#note
-  You can clone main tree, or latest stable tag.
-  %br
-  See change log for more info about stable versions.
-%hr
-  Clone plugin:
-#code_example
+= link_to 'http://github.com/korin/open_flash_chart_2_plugin/downloads', 'http://github.com/korin/open_flash_chart_2_plugin/downloads'
+%br
+or checkout newest code from repository:
+.code_example
   %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}=@files[:install_plugin]
 %br
-That's it, now You can use that plugin.
+Memember to copy javascript and swf file from vendor/plugins/ofc2/requirements to app public directory, you can use rake task:
+.code_example
+  %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}=@files[:copy_files]
 %br
 See Charts section for examples. Read also README file from plugin directory for configuration and code example.
 %br
-#note
-  Remember that plugin is using json.
-  #code_example
+%br
+.note
+  Plugin is using json.
+  .code_example
     - _code = "\# just install as gem \n sudo gem install json"
     %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}= _code
+%br
 %hr
-  Grab sample application (this project site):
-#code_example
+%br
+Grab sample application (this project site).
+%br
+Download any project tag from github site:
+%br
+= link_to 'http://github.com/korin/open_flash_chart_2/downloads', 'http://github.com/korin/open_flash_chart_2/downloads'
+%br
+or checkout newest code from repository:
+.code_example
   %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}=@files[:install_sample_app]
-#note
-  Remember that application is using haml.
-  #code_example
+%br
+.note
+  Application is using haml.
+  .code_example
     - _code = "\# just install as gem \n  sudo gem install haml"
     %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}= _code
 

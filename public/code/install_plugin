@@ -1,8 +1,4 @@
 # go to plugins directory
   cd vendor/plugins
 # clone git repo to open_flash_chart_2 directory
-  git clone git://github.com/korin/open_flash_chart_2_plugin.git open_flash_chart_2
-# go to main rails directory
-  cd ../..
-#install it using rake command
-  rake open_flash_chart_2:install
+  git clone git://github.com/korin/open_flash_chart_2_plugin.git ofc2

@@ -8,8 +8,8 @@
     %meta{:name=>'Content-Language', :content=>'en-us'}
     = stylesheet_link_tag "main" 
   %body
-    #site
+    .site
       =render :partial => 'share/main_menu'
-      #content
+      .content
         = yield
     = google_analitycs_js

@@ -10,9 +10,9 @@
     = stylesheet_link_tag "SyntaxHighlighter" 
     = javascript_include_tag 'syntaxHighlight/shCore.js'
   %body
-    #site
+    .site
       =render :partial => 'share/main_menu'
       =render :partial => 'share/infos_menu'
-      #content
+      .content
         = yield
     = google_analitycs_js

@@ -17,10 +17,10 @@
     = javascript_include_tag 'mootools-1.2-more.js'
     = javascript_include_tag 'accordion.js'
   %body
-    #site
+    .site
       =render :partial => 'share/main_menu'
       =render :partial => 'share/chart_examples_menu'
-      #content
+      .content
         = yield
 
     <script language="javascript">

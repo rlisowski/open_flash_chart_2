@@ -4,14 +4,14 @@ body
   :margin 0px
   :font-family verdana
 
-#header_text
+.header_text
   :float left
   :min-height 20px
   :margin 0px
   :padding 0px
   :font-size 25px
   :color #000
-#link_main
+.link_main
   :float right
   :min-height 20px
   :border-style none
@@ -23,14 +23,14 @@ body
     :color #999
   a:hover
     :color #000
-#site
+.site
   :padding 0
   :margin 0px auto
   :width 800px
   :height 100%
   :color blue
   :text-align left
-  #top_menu
+  .top_menu
     :float right
     :margin 0
     :padding 5px
@@ -40,7 +40,7 @@ body
     :border-bottom-style solid
     :border-width 2px
     :border-color blue
-  #left_menu
+  .left_menu
     :margin 0
     :padding 0
     :width 130px
@@ -50,7 +50,7 @@ body
       :float left
       :margin 0
       :padding 0
-      #link
+      .link
         :clear both
         //:float left
         :min-height 20px !important
@@ -66,7 +66,7 @@ body
           :color #999
         a:hover
           :color #000
-    #link
+    .link
       :float left
       :min-height 20px !important
       :height auto !important
@@ -81,69 +81,66 @@ body
         :color #999
       a:hover
         :color #000
-    #link.header
-      :float left
-      :min-height 20px !important
-      :height auto !important
-      :height 20px
-      :border
-        :style solid
-        :width 1px
-        :color #BBB
-      :margin 5px 0
-      :padding 5px
-      :font-weight bold
-      :color #000
-      :background-color #BBB
-      :cursor pointer
-      :width 120px
-  #content
+      &.header
+        :float left
+        :min-height 20px !important
+        :height auto !important
+        :height 20px
+        :border
+          :style solid
+          :width 1px
+          :color #BBB
+        :margin 5px 0
+        :padding 5px
+        :font-weight bold
+        :color #000
+        :background-color #BBB
+        :cursor pointer
+        :width 120px
+  .content
     :margin 0
     :padding 5px
     :width 650px
     :float right
     :color #000
-#info_link
+.info_link
   :width 100%
   :float left
   :margin 5px
   :padding 5px
   :min-height 20px
-#info_description
+.info_description
   :width 100%
   :float left
   :margin 5px 0px 5px 5px
   :padding 0px 5px 5px 30px
   :min-height 20px
-#code_example
+.code_example
+  :margin 0
+  :padding 0
   :float left
   :overflow auto
   :width 100%
-#code
+.code
   :background-color black
   :overflow auto
   :min-height 60px
   :min-width 200px
   :margin 5px
   :padding 5px
-  #comment
-    :color white
-    :padding 0px 0px 0px 5px
-  #command
-    :color #f8ffaa
-    :padding 0px 0px 0px 25px
-#note
+.note
   :background-color white
   :color blue
   :overflow auto
   :min-height 30px
-  :min-width 200px
-  :margin 5px
-  :padding 5px
-  :border-style solid
-  :border-width 2px
-  :border-color blue
-#error
+  :width 100%
+  :margin 2px
+  :padding 2px
+  :border
+    :style solid
+    :width 1px
+    :color blue
+.error
   :background-color white
   :color red
   :overflow auto

@@ -1,13 +1,9 @@
 .left_menu
   .link.header
-    Info
+    = link_to "Info", {:action => :index}
   .elements
-    .link
-      = link_to "Change&nbsp;log", { :action => "changes" }
-    .link
-      = link_to "TODO", { :action => "todo" }
-    .link
-      = link_to "Related projects", { :action => "related_project" }
-    .link
-      = link_to "How download / install", { :action => "install" }
+    = render :partial => '/share/sublink', :locals => {:name => "Change&nbsp;log", :url => { :action => "changes" }}
+    = render :partial => '/share/sublink', :locals => {:name => "TODO", :url => { :action => "todo" }}
+    = render :partial => '/share/sublink', :locals => {:name => "Related projects", :url => { :action => "related_project" }}
+    = render :partial => '/share/sublink', :locals => {:name => "How download / install", :url => { :action => "install" }}
 

@@ -3,7 +3,7 @@ class ChartExamplesController < ApplicationController
   def render_chart
     unless action_name.eql?('index') or action_name =~/^inline_.*/
       @graph = "<div>
-          #{ofc2(650,300, url_for( :controller => :charts_ofc2, :action =>action_name), '' )}
+          #{ofc2(650,400, url_for( :controller => :charts_ofc2, :action =>action_name), '' )}
         </div>
         <div>
           <a href='/charts_ofc2/#{action_name}'>To see the data in json format click here</a>
@@ -27,9 +27,6 @@ class ChartExamplesController < ApplicationController
 
 # display graph in view (haml)
   =@graph
-
-# display graph in view (html.erb)
-  <%=@graph%>
 EOF
       render :action => "show"
     end
@@ -37,7 +34,7 @@ EOF
   def index
   end
   def inline_line
-    title = OFC2::Title.new( DateTime.now.strftime('%Y-%m-%d %H:%M'), "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     line_dot = OFC2::Line.new
     line_dot.values= [9,8,7,6,5,4,3,2,1]
     line_dot.colour = '#FFAAFF'
@@ -51,7 +48,7 @@ EOF
     chart << line_dot
     chart << line_dot_2
 
-    @graph = ofc2_inline(650,300,chart,'/','inline_line')
+    @graph = ofc2_inline(650,300,chart,'inline_line')
 
     @name = action_name.gsub('_',' ')
 
@@ -80,7 +77,7 @@ EOF
     render :action => "show"
   end
   def inline_many_line
-    title = OFC2::Title.new( DateTime.now.strftime('%Y-%m-%d %H:%M'), "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     line_dot = OFC2::Line.new
     line_dot.values= [9,8,7,6,5,4,3,2,1]
     line_dot.colour = '#00FF00'
@@ -88,9 +85,9 @@ EOF
     chart.title= title
     chart << line_dot
 
-    @graph = ofc2_inline(650,300,chart,'/','inline_line')
+    @graph = ofc2_inline(650,300,chart,'inline_line')
 
-    title = OFC2::Title.new( DateTime.now.strftime('%Y-%m-%d %H:%M'), "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     bar = OFC2::Bar.new
     bar.values= [9,8,7,6,5,4,3,2,1]
     bar.colour = '#FF0000'
@@ -98,7 +95,7 @@ EOF
     chart.title= title
     chart << bar
 
-    @graph += ofc2_inline(650,300,chart,'/','inline_line_2')
+    @graph += ofc2_inline(650,300,chart,'inline_line_2')
 
     @name = action_name.gsub('_',' ')
     if File.exist?("#{RAILS_ROOT}/public/code/charts_ofc2_inline_controller.rb")

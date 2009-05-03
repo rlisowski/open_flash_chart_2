@@ -1,0 +1,2 @@
+class DocumentationsController < ApplicationController
+end

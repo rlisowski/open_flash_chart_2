@@ -1,0 +1,10 @@
+.left_menu
+  .index.link.header{ :onclick => "activate_menu('.index');"}
+    = link_to "Documentation", { :controller=>'documentations', :action => :index}
+  .index.elements
+    //= render :partial => '/share/sublink', :locals => {:name => 'Line', :url => { :controller=>'chart_examples', :action => "line" }}
+
+- pattern = ''
+- %w(index).each do |p|
+  - pattern = '.'+p if action_name =~ /.*#{p}.*/
+= javascript_tag "activate_menu('#{pattern}');"

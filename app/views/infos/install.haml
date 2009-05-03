@@ -1,5 +1,4 @@
-= javascript_include_tag 'syntaxHighlight/shBrushBash.js'
-You can download any project tag from github site:
+You can download any project tag from github site (as a zip file):
 %br
 = link_to 'http://github.com/korin/open_flash_chart_2_plugin/downloads', 'http://github.com/korin/open_flash_chart_2_plugin/downloads'
 %br
@@ -7,24 +6,30 @@ or checkout newest code from repository:
 .code_example
   %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}=@files[:install_plugin]
 %br
-Memember to copy javascript and swf file from vendor/plugins/ofc2/requirements to app public directory, you can use rake task:
+Remember to copy javascript and swf file from vendor/plugins/open_flash_chart_2/requirements to app public directory, you can use rake task:
 .code_example
   %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}=@files[:copy_files]
 %br
-See Charts section for examples. Read also README file from plugin directory for configuration and code example.
+See
+= link_to "Charts", {:controller => :chart_examples}
+section for examples. Read also README file from plugin directory for configuration and code example.
 %br
 %br
 .note
-  Plugin is using json.
+  If you use rails older that 2.3, you will need json gem.
   .code_example
-    - _code = "\# just install as gem \n sudo gem install json"
+    - _code = "\# just install as gem, windows users don't need sudo command \n sudo gem install json"
     %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}= _code
+    %textarea{:name=>"code", :class=>'ruby:nogutter:nocontrols', :cols=>"80", :rows=>"20"}= "#require it in enviroment \n config.gem 'json'"
+.note
+  If You use rails older that 2.3  you have to uncomment to_json method.
+  Lines 17-19 in vendor/plugins/open_flash_chart_2/lib/open_flasch_chart_2.rb file.
 %br
 %hr
 %br
 Grab sample application (this project site).
 %br
-Download any project tag from github site:
+Download any project tag from github site (as a zip file):
 %br
 = link_to 'http://github.com/korin/open_flash_chart_2/downloads', 'http://github.com/korin/open_flash_chart_2/downloads'
 %br
@@ -35,10 +40,5 @@ or checkout newest code from repository:
 .note
   Application is using haml.
   .code_example
-    - _code = "\# just install as gem \n  sudo gem install haml"
+    - _code = "\# just install as gem, windows users don't need sudo command \n  sudo gem install haml"
     %textarea{:name=>"code", :class=>'sh:nogutter:nocontrols', :cols=>"80", :rows=>"20"}= _code
-
-<script language="javascript">
-dp.SyntaxHighlighter.ClipboardSwf = '/clipboard.swf';
-dp.SyntaxHighlighter.HighlightAll('code');
-</script>

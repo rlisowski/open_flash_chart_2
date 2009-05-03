@@ -3,6 +3,10 @@ body
   :padding 0px
   :margin 0px
   :font-family verdana
+  #donate
+    :position fixed
+    :top 50%
+    :left 10px
 
 .header_text
   :float left
@@ -10,6 +14,7 @@ body
   :margin 0px
   :padding 0px
   :font-size 25px
+  :font-weight bolder
   :color #000
 .link_main
   :float right
@@ -23,10 +28,16 @@ body
     :color #999
   a:hover
     :color #000
+.link_main.active
+  a
+    :color #000
+  a:hover
+    :color #000
 .site
   :padding 0
   :margin 0px auto
-  :width 800px
+  //:width 800px
+  :width 1000px
   :height 100%
   :color blue
   :text-align left
@@ -43,7 +54,7 @@ body
   .left_menu
     :margin 0
     :padding 0
-    :width 130px
+    :width 180px
     :float left
     :text-align left
     .elements
@@ -61,11 +72,16 @@ body
         :padding 5px
         :font-weight bold
         :color #000
-        :width 120px
+        :width 170px
         a
           :color #999
         a:hover
           :color #000
+        &.active
+          a
+            :color #000
+          a:hover
+            :color #999
     .link
       :float left
       :min-height 20px !important
@@ -76,7 +92,7 @@ body
       :padding 5px
       :font-weight bold
       :color #000
-      :width 120px
+      :width 170px
       a
         :color #999
       a:hover
@@ -96,11 +112,17 @@ body
         :color #000
         :background-color #BBB
         :cursor pointer
-        :width 120px
+        :width 170px
+        a
+          :color #000
+        a:hover
+          :color #999
+        &.active
+          :background-color rgb(239, 239, 239)
   .content
     :margin 0
     :padding 5px
-    :width 650px
+    :width 800px
     :float right
     :color #000
 .info_link
@@ -118,7 +140,7 @@ body
 .code_example
   :margin 0
   :padding 0
-  :float left
+  //:float left
   :overflow auto
   :width 100%
 .code

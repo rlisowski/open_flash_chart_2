@@ -26,13 +26,13 @@
       }
       }
   %body
-    =render :partial => 'share/donate'
     .site
       =render :partial => 'share/main_menu'
       =render :partial => 'share/left_menu'
       .content
         = yield
 
+    =render :partial => 'share/donate'
     <script language="javascript">
     dp.SyntaxHighlighter.ClipboardSwf = '/clipboard.swf';
     dp.SyntaxHighlighter.HighlightAll('code');

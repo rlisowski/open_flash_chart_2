@@ -1,8 +1,7 @@
 class ChartsOfc2Controller < ApplicationController
   #line_begin
   def line
-    title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     line_dot = OFC2::Line.new( :values => [9,8,7,6,5,4,3,2,1,12] )
     chart = OFC2::Graph.new
     chart.title= title
@@ -13,137 +12,52 @@ class ChartsOfc2Controller < ApplicationController
 
   #line_with_nills_begin
   def line_with_nills
-    title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
-    line = OFC2::Line.new( :values => [1,nil,5,nil,3,nil,nil,nil,1,10] )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    line_dot_with_nills = OFC2::Line.new( :values => [1,nil,5,nil,3,nil,nil,nil,1,10] )
     chart = OFC2::Graph.new
     chart.title= title
-    chart << line
+    chart << line_dot_with_nills
     render :text => chart.render
   end
   #line_with_nills_end
 
   #lines_with_any_dot_shape_begin
   def lines_with_any_dot_shape
-    title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
 
     data = [2,2,2,2,2,2,2,2,2]
 
     lines = []
 
-    default_dot = OFC2::Dot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12 )
-    lines << OFC2::Line.new(
-      :values => data,
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Dot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    lines << OFC2::Line.new( :values => data, :dot_style => default_dot  )
 
-    default_dot = OFC2::SolidDot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12 )
-    lines << OFC2::Line.new(
-      :values => data.collect { |item| item + 2 },
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::SolidDot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    lines << OFC2::Line.new( :values => data.collect { |item| item + 2 }, :dot_style => default_dot  )
 
-    default_dot = OFC2::HollowDot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    lines << OFC2::Line.new(
-      :values => data.collect { |item| item + 4 },
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::HollowDot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    lines << OFC2::Line.new( :values => data.collect { |item| item + 4 }, :dot_style => default_dot  )
 
-    default_dot = OFC2::Star.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    lines << OFC2::Line.new(
-      :values => data.collect { |item| item + 6 },
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Star.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    lines << OFC2::Line.new( :values => data.collect { |item| item + 6 }, :dot_style => default_dot  )
 
-    default_dot = OFC2::Bow.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    lines << OFC2::Line.new(
-      :values => data.collect { |item| item + 8 },
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Bow.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    lines << OFC2::Line.new( :values => data.collect { |item| item + 8 }, :dot_style => default_dot  )
 
-    default_dot = OFC2::Anchor.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    lines << OFC2::Line.new(
-      :values => data.collect { |item| item + 10 },
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Anchor.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    lines << OFC2::Line.new( :values => data.collect { |item| item + 10 }, :dot_style => default_dot  )
 
-    default_dot = OFC2::Anchor.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :sides => 6 )
-    lines << OFC2::Line.new(
-      :values => data.collect { |item| item + 12 },
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Anchor.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :sides => 6 )
+    lines << OFC2::Line.new( :values => data.collect { |item| item + 12 }, :dot_style => default_dot  )
 
     custom_data = []
-    custom_data << OFC2::Dot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :y =>  16
-    )
-    custom_data << OFC2::SolidDot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :y =>  16
-    )
-    custom_data << OFC2::HollowDot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :y =>  16
-    )
-    custom_data << OFC2::Star.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :y =>  16
-    )
-    custom_data << OFC2::Bow.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :y =>  16
-    )
-    custom_data << OFC2::Anchor.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :y =>  16
-    )
-    custom_data << OFC2::Anchor.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :sides => 6,
-      :y =>  16
-    )
+    custom_data << OFC2::Dot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :y =>  16 )
+    custom_data << OFC2::SolidDot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :y =>  16 )
+    custom_data << OFC2::HollowDot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :y =>  16 )
+    custom_data << OFC2::Star.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :y =>  16 )
+    custom_data << OFC2::Bow.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :y =>  16 )
+    custom_data << OFC2::Anchor.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :y =>  16 )
+    custom_data << OFC2::Anchor.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :sides => 6, :y =>  16 )
 
     lines << OFC2::Line.new( :values => custom_data)
 
@@ -162,34 +76,20 @@ class ChartsOfc2Controller < ApplicationController
 
   #lines_with_any_line_style_begin
   def lines_with_any_line_style
-    title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
 
     data = [2,2,2,2,2,2,2,2,2]
 
     lines = []
 
     line_style = OFC2::LineStyle.new(:on => 30, :off => 10)
-    lines << OFC2::Line.new(
-      :values => data,
-      :line_style => line_style,
-      :colour => '#D4C345',
-      :width => 2
-    )
+    lines << OFC2::Line.new( :values => data, :line_style => line_style, :colour => '#D4C345', :width => 2  )
 
     line_style = OFC2::LineStyle.new(:on => 30, :off => 30)
-    lines << OFC2::Line.new(
-      :values => data.collect { |item| item + 2 },
-      :line_style => line_style, :colour =>'#C95653',
-      :width => 1
-    )
+    lines << OFC2::Line.new( :values => data.collect { |item| item + 2 }, :line_style => line_style, :colour =>'#C95653', :width => 1  )
 
     line_style = OFC2::LineStyle.new(:on => 10, :off => 30)
-    lines << OFC2::Line.new(
-      :values => data.collect { |item| item + 4 },
-      :line_style => line_style, :colour => '#8084FF',
-      :width => 6
-    )
+    lines << OFC2::Line.new( :values => data.collect { |item| item + 4 }, :line_style => line_style, :colour => '#8084FF', :width => 6  )
 
     y = OFC2::YAxis.new(:min => 0, :max => 8, :steps => 4)
 
@@ -206,10 +106,7 @@ class ChartsOfc2Controller < ApplicationController
 
   #bar_begin
   def bar
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     bar = OFC2::Bar.new(:text => 'simple bar', :colour => '#000000')
     bar.values= [9,8,7,6,5,4,3,2,1]
     chart = OFC2::Graph.new
@@ -221,14 +118,8 @@ class ChartsOfc2Controller < ApplicationController
 
   #glass_bar_begin
   def glass_bar
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
-    bar = OFC2::BarGlass.new(
-      :text => 'simple bar',
-      :colour => '#000000'
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    bar = OFC2::BarGlass.new(:text => 'simple bar', :colour => '#000000')
     bar.values= [9,8,7,6,5,4,3,2,1]
     chart = OFC2::Graph.new
     chart.title= title
@@ -239,14 +130,8 @@ class ChartsOfc2Controller < ApplicationController
 
   #bar_round_glass_begin
   def bar_round_glass
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
-    bar = OFC2::BarRoundGlass.new(
-      :text => 'simple bar',
-      :colour => '#000000'
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    bar = OFC2::BarRoundGlass.new(:text => 'simple bar', :colour => '#000000')
     bar.values= [9,8,7,6,5,4,3,2,1]
     chart = OFC2::Graph.new
     chart.title= title
@@ -257,14 +142,8 @@ class ChartsOfc2Controller < ApplicationController
 
   #bar_round_begin
   def bar_round
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
-    bar = OFC2::BarRound.new(
-      :text => 'simple bar',
-      :colour => '#000000'
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    bar = OFC2::BarRound.new(:text => 'simple bar', :colour => '#000000')
     bar.values= [9,8,7,6,5,4,3,2,1]
     chart = OFC2::Graph.new
     chart.title= title
@@ -275,14 +154,8 @@ class ChartsOfc2Controller < ApplicationController
 
   #bar_dome_begin
   def bar_dome
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
-    bar = OFC2::BarDome.new(
-      :text => 'simple bar',
-      :colour => '#000000'
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    bar = OFC2::BarDome.new(:text => 'simple bar', :colour => '#000000')
     bar.values= [9,8,7,6,5,4,3,2,1]
     chart = OFC2::Graph.new
     chart.title= title
@@ -293,16 +166,10 @@ class ChartsOfc2Controller < ApplicationController
 
   #bar_3d_begin
   def bar_3d
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     bar = OFC2::Bar3d.new(:text => 'simple bar', :colour => '#D54C78')
     bar.values = [9,8,7,6,5,4,3,2,1]
-    bar.values << OFC2::BarValue.new(
-      :top => 10,
-      :tip => 'Hello<br>#val#'
-    )
+    bar.values << OFC2::BarValue.new(:top => 10, :tip => 'Hello<br>#val#')
 
     x = OFC2::XAxis.new
     x.colour= '#909090'
@@ -351,8 +218,7 @@ class ChartsOfc2Controller < ApplicationController
     y.set_range(0, 12, 3)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << bar
     chart.x_axis= x
     chart.y_axis= y
@@ -381,8 +247,7 @@ class ChartsOfc2Controller < ApplicationController
     y.set_range(0, 12, 3)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << bar
     chart.x_axis= x
     chart.y_axis= y
@@ -411,8 +276,7 @@ class ChartsOfc2Controller < ApplicationController
     y.set_range(0, 12, 3)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << bar
     chart.x_axis= x
     chart.y_axis= y
@@ -441,8 +305,7 @@ class ChartsOfc2Controller < ApplicationController
     y.set_range(0, 12, 3)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << bar
     chart.x_axis= x
     chart.y_axis= y
@@ -474,8 +337,7 @@ class ChartsOfc2Controller < ApplicationController
     y.labels = ["Make garden look sexy","Paint house","Move into house"]
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << bar
     chart.x_axis= x
     chart.y_axis= y
@@ -491,31 +353,14 @@ class ChartsOfc2Controller < ApplicationController
     bar.values << [2.5, 5]
     bar.values << [7.5]
     bar.values << [5, OFC2::BarStackValue.new(:val => 4, :colour => '#ff0000')]
-    bar.values << [2, 2, 2, 2, OFC2::BarStackValue.new(
-        :val => 2,
-        :colour => '#ff00ff',
-        :tip => 'custop tip<br>#val# of #total#'
-      )
-    ]
+    bar.values << [2, 2, 2, 2, OFC2::BarStackValue.new(:val => 2, :colour => '#ff00ff', :tip => 'custop tip<br>#val# of #total#')]
     bar.colour= '#00FF00'
     bar.tip = 'X label [#x_label#], Value [#val#]<br>Total [#total#]'
 
     keys = []
-    keys << OFC2::BarStackKey.new(
-      :colour => '#ff0000',
-      :text => 'red',
-      :font_size => 13
-    )
-    keys << OFC2::BarStackKey.new(
-      :colour => '#ff00ff',
-      :text => 'pink',
-      :font_size => 13
-    )
-    keys << OFC2::BarStackKey.new(
-      :colour => '#00FF00',
-      :text => 'green',
-      :font_size => 13
-    )
+    keys << OFC2::BarStackKey.new( :colour => '#ff0000', :text => 'red', :font_size => 13 )
+    keys << OFC2::BarStackKey.new( :colour => '#ff00ff', :text => 'pink', :font_size => 13 )
+    keys << OFC2::BarStackKey.new( :colour => '#00FF00', :text => 'green', :font_size => 13 )
     bar.set_keys keys
 
     x_labels = OFC2::XAxisLabels.new
@@ -528,8 +373,7 @@ class ChartsOfc2Controller < ApplicationController
     y = OFC2::YAxis.new
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << bar
     chart.x_axis= x
     chart.y_axis= y
@@ -547,12 +391,7 @@ class ChartsOfc2Controller < ApplicationController
       x+=0.4
     end
 
-    area = OFC2::Area.new(
-      :values => data,
-      :fill => '#FA00fA',
-      :text =>'tangens',
-      :colour => '#000000'
-    )
+    area = OFC2::Area.new(:values => data, :fill => '#FA00fA', :text =>'tangens', :colour => '#000000' )
 
     x = OFC2::XAxis.new
     x.steps= 5
@@ -566,8 +405,7 @@ class ChartsOfc2Controller < ApplicationController
 
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart.x_axis= x
     chart.y_axis= y
     chart << area
@@ -581,97 +419,26 @@ class ChartsOfc2Controller < ApplicationController
 
     areas = []
 
-    default_dot = OFC2::Anchor.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12,
-      :sides => 6
-    )
-    areas << OFC2::Area.new(
-      :values => data.collect { |item| item + 96 },
-      :fill => '#FFC0C0',
-      :text =>'anchor 6 sides',
-      :colour => '#FFC0C0',
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Anchor.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12, :sides => 6 )
+    areas << OFC2::Area.new(:values => data.collect { |item| item + 96 }, :fill => '#FFC0C0', :text =>'anchor 6 sides', :colour => '#FFC0C0', :dot_style => default_dot   )
 
-    default_dot = OFC2::Anchor.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    areas << OFC2::Area.new(
-      :values => data.collect { |item| item + 80 },
-      :fill => '#FFA0A0',
-      :text =>'anchor',
-      :colour => '#FFA0A0',
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Anchor.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    areas << OFC2::Area.new(:values => data.collect { |item| item + 80 }, :fill => '#FFA0A0', :text =>'anchor', :colour => '#FFA0A0', :dot_style => default_dot   )
 
-    default_dot = OFC2::Bow.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    areas << OFC2::Area.new(
-      :values => data.collect { |item| item + 64 },
-      :fill => '#FF8080',
-      :text =>'bow',
-      :colour => '#FF8080',
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Bow.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    areas << OFC2::Area.new(:values => data.collect { |item| item + 64 }, :fill => '#FF8080', :text =>'bow', :colour => '#FF8080', :dot_style => default_dot   )
 
-    default_dot = OFC2::Star.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    areas << OFC2::Area.new(
-      :values => data.collect { |item| item + 48 },
-      :fill => '#FF6060',
-      :text =>'star',
-      :colour => '#FF6060',
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Star.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    areas << OFC2::Area.new(:values => data.collect { |item| item + 48 }, :fill => '#FF6060', :text =>'star', :colour => '#FF6060', :dot_style => default_dot   )
 
-    default_dot = OFC2::HollowDot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    areas << OFC2::Area.new(
-      :values => data.collect { |item| item + 32 },
-      :fill => '#FF4040',
-      :text =>'hollow dot',
-      :colour => '#FF4040',
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::HollowDot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    areas << OFC2::Area.new(:values => data.collect { |item| item + 32 }, :fill => '#FF4040', :text =>'hollow dot', :colour => '#FF4040', :dot_style => default_dot   )
 
-    default_dot = OFC2::SolidDot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    areas << OFC2::Area.new(
-      :values => data.collect { |item| item + 16 },
-      :fill => '#FF2020',
-      :text =>'solid dot',
-      :colour => '#FF2020',
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::SolidDot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    areas << OFC2::Area.new(:values => data.collect { |item| item + 16 }, :fill => '#FF2020', :text =>'solid dot', :colour => '#FF2020', :dot_style => default_dot   )
 
-    default_dot = OFC2::Dot.new(
-      :colour => '#FF0000',
-      :dot_size => 10,
-      :halo_size =>12
-    )
-    areas << OFC2::Area.new(
-      :values => data,
-      :fill => '#FF0000',
-      :text =>'dot',
-      :colour => '#FF0000',
-      :dot_style => default_dot
-    )
+    default_dot = OFC2::Dot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    areas << OFC2::Area.new(:values => data, :fill => '#FF0000', :text =>'dot', :colour => '#FF0000', :dot_style => default_dot   )
 
     x = OFC2::XAxis.new
     x.steps= 2
@@ -685,10 +452,7 @@ class ChartsOfc2Controller < ApplicationController
 
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart.x_axis= x
     chart.y_axis= y
     areas.each do |area|
@@ -723,8 +487,7 @@ class ChartsOfc2Controller < ApplicationController
     pie.colours = colours
 
     chart = OFC2::Graph.new
-    chart.title= OFC2::Title.new( :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    chart.title= OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << pie
 
     render :text => chart.render
@@ -755,10 +518,7 @@ class ChartsOfc2Controller < ApplicationController
     pie.colours = colours
 
     chart = OFC2::Graph.new
-    chart.title= OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title= OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << pie
 
     render :text => chart.render
@@ -790,10 +550,7 @@ class ChartsOfc2Controller < ApplicationController
     pie.colours = colours
 
     chart = OFC2::Graph.new
-    chart.title= OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title= OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << pie
 
     render :text => chart.render
@@ -825,10 +582,7 @@ class ChartsOfc2Controller < ApplicationController
     pie.colours = colours
 
     chart = OFC2::Graph.new
-    chart.title= OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title= OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << pie
 
     render :text => chart.render
@@ -838,10 +592,7 @@ class ChartsOfc2Controller < ApplicationController
   #pie_on_click_event_begin
   def pie_on_click_event
     data_1 = [
-      OFC2::PieValue.new(
-        :value => 35, :label => 'Mozilla', :font_size => 35,
-        :on_click => "alert('mozilla clicked!')"
-      ),
+      OFC2::PieValue.new(:value => 35,  :label => 'Mozilla', :font_size => 35, :on_click => "alert('mozilla clicked!')"),
       OFC2::PieValue.new(:value => 25, :label => 'Safari', :font_size => 25),
       OFC2::PieValue.new(:value => 30, :label =>  'Opera', :font_size => 30),
       OFC2::PieValue.new(:value => 10,  :label => 'IE', :font_size => 10)
@@ -863,10 +614,7 @@ class ChartsOfc2Controller < ApplicationController
     pie.colours = colours
 
     chart = OFC2::Graph.new
-    chart.title= OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title= OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << pie
 
     render :text => chart.render
@@ -914,10 +662,7 @@ class ChartsOfc2Controller < ApplicationController
     pie.colours = colours
 
     chart = OFC2::Graph.new
-    chart.title= OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title= OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << under_pie
     chart << pie
 
@@ -932,44 +677,27 @@ class ChartsOfc2Controller < ApplicationController
     x = 0
     y = 360
     while x<y
-      data_2 << OFC2::ScatterValue.new(
-        :x =>"%6.2f" % Math.sin(x/Math::RAD2DEG),
-        :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)+0.5)
-      )
-      data_2 << OFC2::ScatterValue.new(
-        :x =>"%6.2f" % (Math.sin(x/Math::RAD2DEG)-2.3),
-        :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)+0.5)
-      )
-      data_2 << OFC2::ScatterValue.new(
-        :x =>"%6.2f" % (Math.sin(x/Math::RAD2DEG)+2.3),
-        :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)+0.5)
-      )
+      data_2 << OFC2::ScatterValue.new(:x =>"%6.2f" % Math.sin(x/Math::RAD2DEG), :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)+0.5))
+      data_2 << OFC2::ScatterValue.new(:x =>"%6.2f" % (Math.sin(x/Math::RAD2DEG)-2.3), :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)+0.5))
+      data_2 << OFC2::ScatterValue.new(:x =>"%6.2f" % (Math.sin(x/Math::RAD2DEG)+2.3), :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)+0.5))
       x+=15
     end
     data_3 = []
     x = 0
     y = 360
     while x<y
-      data_3 << OFC2::ScatterValue.new(
-        :x =>"%6.2f" % (Math.sin(x/Math::RAD2DEG)+1.2),
-        :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)-0.5)
-      )
-      data_3 << OFC2::ScatterValue.new(
-        :x =>"%6.2f" % (Math.sin(x/Math::RAD2DEG)-1.2),
-        :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)-0.5)
-      )
+      data_3 << OFC2::ScatterValue.new(:x =>"%6.2f" % (Math.sin(x/Math::RAD2DEG)+1.2), :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)-0.5))
+      data_3 << OFC2::ScatterValue.new(:x =>"%6.2f" % (Math.sin(x/Math::RAD2DEG)-1.2), :y => "%6.2f" % (Math.cos(x/Math::RAD2DEG)-0.5))
       x+=15
     end
 
 
-    default_dot = OFC2::SolidDot.new(
-      :colour => '#FF0000', :dot_size => 4, :halo_size =>4 )
+    default_dot = OFC2::SolidDot.new( :colour => '#FF0000', :dot_size => 4, :halo_size =>4 )
     circle = OFC2::Scatter.new(:colour => '#D600FF')
     circle.dot_style = default_dot
     circle.values= data_2
 
-    default_dot = OFC2::Star.new(
-      :colour => '#FF0000', :dot_size => 4, :halo_size =>4 )
+    default_dot = OFC2::Star.new( :colour => '#FF0000', :dot_size => 4, :halo_size =>4 )
     circle2 = OFC2::Scatter.new(:colour => '#D600FF')
     circle2.dot_style = default_dot
     circle2.values= data_3
@@ -979,10 +707,7 @@ class ChartsOfc2Controller < ApplicationController
     y = OFC2::YAxis.new(:min => -3, :max => 3)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << circle
     chart << circle2
     chart.x_axis= x
@@ -1011,22 +736,16 @@ class ChartsOfc2Controller < ApplicationController
     end
 
 
-    default_dot = OFC2::SolidDot.new(
-      :colour => '#FF0000', :dot_size => 4, :halo_size =>4 )
-    line = OFC2::ScatterLine.new(
-      :colour => '#D600FF', :dot_style => default_dot, :values => data_1,
+    default_dot = OFC2::SolidDot.new( :colour => '#FF0000', :dot_size => 4, :halo_size =>4 )
+    line = OFC2::ScatterLine.new(:colour => '#D600FF', :dot_style => default_dot, :values => data_1,
       :stepgraph => 'horizontal', :text => 'stepgraph horizontal')
 
-    default_dot = OFC2::SolidDot.new(
-      :colour => '#FFFF00', :dot_size => 4, :halo_size =>4 )
-    line2 = OFC2::ScatterLine.new(
-      :colour => '#D6AAFF', :dot_style => default_dot, :values => data_2,
+    default_dot = OFC2::SolidDot.new( :colour => '#FFFF00', :dot_size => 4, :halo_size =>4 )
+    line2 = OFC2::ScatterLine.new(:colour => '#D6AAFF', :dot_style => default_dot, :values => data_2,
       :stepgraph => 'vertical', :text => 'stepgraph vertical')
 
-    default_dot = OFC2::SolidDot.new(
-      :colour => '#F00F00', :dot_size => 4, :halo_size =>4 )
-    line3 = OFC2::ScatterLine.new(
-      :colour => '#D6AA00', :dot_style => default_dot, :values => data_3,
+    default_dot = OFC2::SolidDot.new( :colour => '#F00F00', :dot_size => 4, :halo_size =>4 )
+    line3 = OFC2::ScatterLine.new(:colour => '#D6AA00', :dot_style => default_dot, :values => data_3,
       :stepgraph => nil, :text => 'empty stepgraph')
 
 
@@ -1035,10 +754,7 @@ class ChartsOfc2Controller < ApplicationController
     y = OFC2::YAxis.new(:min => -10, :max => 10)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << line
     chart << line2
     chart << line3
@@ -1051,10 +767,7 @@ class ChartsOfc2Controller < ApplicationController
 
   #mix_line_bar_begin
   def mix_line_bar
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     line_dot = OFC2::Line.new(:text => 'line label', :colour => '#FF0000')
     line_dot.tip = '#val#<br>Your text here for line'
     line_dot.values= [9,8,7,6,5,4,3,2,1]
@@ -1078,13 +791,9 @@ class ChartsOfc2Controller < ApplicationController
 
   #mix_advanced_tooltip_begin
   def mix_advanced_tooltip
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
 
-    default_dot = OFC2::Dot.new(
-      :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    default_dot = OFC2::Dot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
     line_dot = OFC2::Line.new
     line_dot.dot_style = default_dot
     line_dot.set_tip('#val#<br>Your text here for line')
@@ -1109,10 +818,8 @@ class ChartsOfc2Controller < ApplicationController
 
       _tooltip = "Summer Sales Blitz<br>actual sales: #{actual_sales}<br>forecast sales:#{forecast_sales}"
 
-      line_values << OFC2::Dot.new(
-        :value => actual_sales, :colour => '#FF0000', :tip => _tooltip)
-      bar_values << OFC2::BarValue.new(
-        :top => forecast_sales, :colour => '#00FF00', :tip =>_tooltip)
+      line_values << OFC2::Dot.new(:value => actual_sales, :colour => '#FF0000', :tip => _tooltip)
+      bar_values << OFC2::BarValue.new(:top => forecast_sales, :colour => '#00FF00', :tip =>_tooltip)
     end
 
     line_dot.values= line_values
@@ -1150,13 +857,9 @@ class ChartsOfc2Controller < ApplicationController
 
   #mix_advanced_legends_begin
   def mix_advanced_legends
-    title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
 
-    default_dot = OFC2::Dot.new(
-      :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
+    default_dot = OFC2::Dot.new( :colour => '#FF0000', :dot_size => 10, :halo_size =>12 )
     line_dot = OFC2::Line.new
     line_dot.dot_style = default_dot
     line_dot.set_tip('#val#<br>Your text here for line')
@@ -1180,12 +883,8 @@ class ChartsOfc2Controller < ApplicationController
     0.upto(max) do |i|
       actual_sales = rand(max)
       forecast_sales = rand(max)
-      line_values << OFC2::SolidDot.new(
-        :value => actual_sales, :colour => '#FF0000',
-        :tip => "actual sales: #{actual_sales}")
-      bar_values << OFC2::BarValue.new(
-        :top => forecast_sales, :colour => '#00FF00',
-        :tip => "forecast sales:#{forecast_sales}")
+      line_values << OFC2::SolidDot.new(:value => actual_sales, :colour => '#FF0000', :tip => "actual sales: #{actual_sales}")
+      bar_values << OFC2::BarValue.new(:top => forecast_sales, :colour => '#00FF00', :tip => "forecast sales:#{forecast_sales}")
       x_labels_text << "label #{i}"
       y_labels_text << "y label #{i}"
     end
@@ -1201,12 +900,9 @@ class ChartsOfc2Controller < ApplicationController
     #    x_labels.colour = '#FF2ACB'
     #    x_labels.size = 12
 
-    x_labels_text[7] = OFC2::XAxisLabel.new(
-      :text => '7', :colour => '#0000FF', :size => 20, :rotate => 90)
-    x_labels_text[8] = OFC2::XAxisLabel.new(
-      :text => 'eight', :colour => '#8C773E', :size => 16, :rotate => 70)
-    x_labels_text[9] = OFC2::XAxisLabel.new(
-      :text => 'nine',  :colour => '#2683CF', :size => 14, :visible => false)
+    x_labels_text[7] = OFC2::XAxisLabel.new(:text => '7', :colour => '#0000FF', :size => 20, :rotate => 90)
+    x_labels_text[8] = OFC2::XAxisLabel.new(:text => 'eight', :colour => '#8C773E', :size => 16, :rotate => 70)
+    x_labels_text[9] = OFC2::XAxisLabel.new(:text => 'nine',  :colour => '#2683CF', :size => 14, :visible => false)
 
     x_labels.labels= x_labels_text
 
@@ -1242,7 +938,9 @@ class ChartsOfc2Controller < ApplicationController
     chart.x_axis= x
     chart.x_legend=x_legend
     chart.y_legend=y_legend
+    chart.y_legend_right=y_legend
     chart.y_axis= y_axis
+    chart.y_axis_right= y_axis
     chart.bg_colour= '#FFFFFF'
 
     chart << line_dot
@@ -1257,26 +955,20 @@ class ChartsOfc2Controller < ApplicationController
 
     bar = OFC2::HBar.new
     bar.values = []
-    bar.values << OFC2::HBarValue.new(
-      :left => 0, :right => 3, :tip => 'schedule: 2 actual: 3')
-    bar.values << OFC2::HBarValue.new(
-      :left => 0, :right => 3, :tip => 'schedule: 2 actual: 3')
-    bar.values << OFC2::HBarValue.new(
-      :left => 3, :right => 4, :tip => 'schedule: 3 actual: 4')
-    bar.values << OFC2::HBarValue.new(
-      :left => 4, :right => 5, :tip => 'schedule: 4 actual: 5')
+    bar.values << OFC2::HBarValue.new(:left => 0, :right => 3, :tip => 'schedule: 2 actual: 3')
+    bar.values << OFC2::HBarValue.new(:left => 0, :right => 3, :tip => 'schedule: 2 actual: 3')
+    bar.values << OFC2::HBarValue.new(:left => 3, :right => 4, :tip => 'schedule: 3 actual: 4')
+    bar.values << OFC2::HBarValue.new(:left => 4, :right => 5, :tip => 'schedule: 4 actual: 5')
     bar.colour= '#FEC13F'
     bar.text = 'actual'
 
     bar2 = OFC2::HBar.new
-    bar2.values= [OFC2::HBarValue.new(
-        :left => 3, :right => 4, :tip => 'schedule: 3 actual: 4')]
+    bar2.values= [OFC2::HBarValue.new(:left => 3, :right => 4, :tip => 'schedule: 3 actual: 4')]
     bar2.colour= '#FF0000'
     bar2.text = 'schedule'
 
     bar3 = OFC2::HBar.new
-    bar3.values= [OFC2::HBarValue.new(
-        :left => 4, :right => 5, :tip => 'schedule: 4 actual: 5')]
+    bar3.values= [OFC2::HBarValue.new(:left => 4, :right => 5, :tip => 'schedule: 4 actual: 5')]
     bar3.colour= '#0000FF'
     bar3.text = 'traffic'
 
@@ -1292,10 +984,7 @@ class ChartsOfc2Controller < ApplicationController
     end
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << bar3
     chart << bar2
     chart << bar
@@ -1369,10 +1058,7 @@ class ChartsOfc2Controller < ApplicationController
     y.labels = ["y_label"]
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart << shape
     chart << shape2
     chart.x_axis= x
@@ -1409,10 +1095,7 @@ class ChartsOfc2Controller < ApplicationController
     tooltip = OFC2::Tooltip.new(:mouse => 1)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart.radar_axis= x
     chart.tooltip = tooltip
     chart << area
@@ -1431,8 +1114,7 @@ class ChartsOfc2Controller < ApplicationController
       :dot_style => OFC2::HollowDot.new(:colour => '#45909F', :dot_size =>4),
       :tip => "Gold<br>#val#",
       :text => "Mr. Gold"
-      #      :loop => true #important!, join last point with first,
-      #      ommit here to show how it's look when loop  not set
+      #      :loop => true #important!, join last point with first, ommit here to show how it's look when loop  not set
     )
 
     purple = OFC2::Line.new(
@@ -1451,8 +1133,7 @@ class ChartsOfc2Controller < ApplicationController
     labels.labels = ['Zero', '', '', 'Middle', '', 'High']
 
     spoke_labels = OFC2::RadarSpokeLabels.new(
-      :labels => ['Strength', 'Smarts', 'Sweet<br>Tooth', 'Armour',
-        'Max Hit Points', 'Looks Like a Monkey'],
+      :labels => ['Strength', 'Smarts', 'Sweet<br>Tooth', 'Armour', 'Max Hit Points', 'Looks Like a Monkey'],
       :colour => '#9F819F'
     )
 
@@ -1466,10 +1147,7 @@ class ChartsOfc2Controller < ApplicationController
     tooltip = OFC2::Tooltip.new(:mouse => 1)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart.radar_axis= x
     chart.tooltip = tooltip
     chart << gold
@@ -1487,11 +1165,7 @@ class ChartsOfc2Controller < ApplicationController
     end
     values = []
     [30,50,60,70,80,90,100,115,130,115,100,90,80,70,60,50].each_with_index do |number, index|
-      values << OFC2::SolidDot.new(
-        :colour => '#D41E47',
-        :tip => "#val#<br>Spoke: #{spokes[index]}",
-        :value => number
-      )
+      values << OFC2::SolidDot.new(:colour => '#D41E47', :tip => "#val#<br>Spoke: #{spokes[index]}", :value => number)
     end
 
     line = OFC2::Line.new(
@@ -1513,10 +1187,7 @@ class ChartsOfc2Controller < ApplicationController
     tooltip = OFC2::Tooltip.new(:mouse => 1)
 
     chart = OFC2::Graph.new
-    chart.title = OFC2::Title.new(
-      :text => action_name.humanize ,
-      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}"
-    )
+    chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     chart.radar_axis= x
     chart.bg_colour = '#ffffff'
     chart.tooltip = tooltip

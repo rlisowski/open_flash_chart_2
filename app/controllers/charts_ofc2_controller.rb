@@ -938,7 +938,6 @@ class ChartsOfc2Controller < ApplicationController
     chart.x_axis= x
     chart.x_legend=x_legend
     chart.y_legend=y_legend
-    chart.y_legend_right=y_legend
     chart.y_axis= y_axis
     chart.y_axis_right= y_axis
     chart.bg_colour= '#FFFFFF'

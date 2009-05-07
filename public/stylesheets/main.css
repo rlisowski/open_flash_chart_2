@@ -2,7 +2,8 @@ body {
   text-align: center;
   padding: 0px;
   margin: 0px;
-  font-family: verdana; }
+  font-family: verdana;
+  font-size: 1em; }
   body #donate {
     position: fixed;
     top: 50%;
@@ -13,7 +14,7 @@ body {
   min-height: 20px;
   margin: 0px;
   padding: 0px;
-  font-size: 25px;
+  font-size: 2em;
   font-weight: bolder;
   color: #000; }
 
@@ -24,6 +25,7 @@ body {
   margin: 5px;
   padding: 5px;
   font-weight: bold;
+  font-size: 1.2em;
   color: #000; }
   .link_main a {
     color: #999; }
@@ -142,15 +144,8 @@ body {
   margin: 0;
   padding: 0;
   overflow: auto;
-  width: 100%; }
-
-.code {
-  background-color: black;
-  overflow: auto;
-  min-height: 60px;
-  min-width: 200px;
-  margin: 5px;
-  padding: 5px; }
+  width: 100%;
+  font-size: 15px; }
 
 .note {
   background-color: white;

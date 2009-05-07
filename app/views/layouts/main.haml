@@ -7,13 +7,19 @@
     %meta{:'http-equiv'=>'Content-type', :content=>'text/html;charset=utf-8'}
     %meta{:name=>'Content-Language', :content=>'en-us'}
     = stylesheet_link_tag "main"
-    = stylesheet_link_tag "SyntaxHighlighter"
+    = stylesheet_link_tag "syntaxhighlighter/shCore"
+    = stylesheet_link_tag "syntaxhighlighter/shThemeDefault"
+    //= stylesheet_link_tag "syntaxhighlighter/shThemeDjango"
+    //= stylesheet_link_tag "syntaxhighlighter/shThemeEmacs"
+
     = javascript_include_tag 'swfobject'
-    = javascript_include_tag 'syntaxHighlight/shCore.js'
-    = javascript_include_tag 'syntaxHighlight/shBrushRuby.js'
-    = javascript_include_tag 'syntaxHighlight/shBrushBash.js'
-    = javascript_include_tag 'syntaxHighlight/shBrushChLog.js'
+    = javascript_include_tag 'syntaxhighlighter/shCore.js'
+    = javascript_include_tag 'syntaxhighlighter/shBrushRuby.js'
+    = javascript_include_tag 'syntaxhighlighter/shBrushBash.js'
+    = javascript_include_tag 'syntaxhighlighter/shBrushPlain.js'
+    = javascript_include_tag 'syntaxhighlighter/shBrushXml.js'
     = javascript_include_tag 'jquery-1.3.2.min.js'
+
     - javascript_tag do
       function activate_menu(css_selector){
       $('div.elements').hide(); // hide all elements
@@ -33,8 +39,11 @@
         = yield
 
     =render :partial => 'share/donate'
-    <script language="javascript">
-    dp.SyntaxHighlighter.ClipboardSwf = '/clipboard.swf';
-    dp.SyntaxHighlighter.HighlightAll('code');
-    </script>
+    //    <script language="javascript">
+    //    dp.SyntaxHighlighter.ClipboardSwf = '/clipboard.swf';
+    //    dp.SyntaxHighlighter.HighlightAll('code');
+    //    </script>
+    - javascript_tag do
+      SyntaxHighlighter.config.clipboardSwf = '/clipboard.swf';
+      SyntaxHighlighter.all();
     = google_analitycs_js

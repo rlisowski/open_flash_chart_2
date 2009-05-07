@@ -921,6 +921,9 @@ class ChartsOfc2Controller < ApplicationController
     y_legend = OFC2::YLegend.new( :text =>"Y description" )
     y_legend.style= '{font-size: 20px; color: #778877}'
 
+    y_legend_right = OFC2::YLegend.new( :text =>"Y right description" )
+    y_legend_right.style= '{font-size: 20px; color: #887788}'
+
     y_axis = OFC2::YAxis.new
     #    y_axis.set_range(0, max, max/2)
     y_axis.stroke= 3
@@ -938,6 +941,7 @@ class ChartsOfc2Controller < ApplicationController
     chart.x_axis= x
     chart.x_legend=x_legend
     chart.y_legend=y_legend
+    chart.y2_legend=y_legend_right
     chart.y_axis= y_axis
     chart.y_axis_right= y_axis
     chart.bg_colour= '#FFFFFF'

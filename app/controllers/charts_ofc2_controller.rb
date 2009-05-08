@@ -214,8 +214,7 @@ class ChartsOfc2Controller < ApplicationController
     x = OFC2::XAxis.new
     x.set_labels x_labels
 
-    y = OFC2::YAxis.new
-    y.set_range(0, 12, 3)
+    y = OFC2::YAxis.new(:min => 0, :max => 12, :steps => 3)
 
     chart = OFC2::Graph.new
     chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
@@ -243,8 +242,7 @@ class ChartsOfc2Controller < ApplicationController
     x = OFC2::XAxis.new
     x.set_labels x_labels
 
-    y = OFC2::YAxis.new
-    y.set_range(0, 12, 3)
+    y = OFC2::YAxis.new(:min => 0, :max => 12, :steps => 3)
 
     chart = OFC2::Graph.new
     chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
@@ -272,8 +270,7 @@ class ChartsOfc2Controller < ApplicationController
     x = OFC2::XAxis.new
     x.set_labels x_labels
 
-    y = OFC2::YAxis.new
-    y.set_range(0, 12, 3)
+    y = OFC2::YAxis.new(:min => 0, :max => 12, :steps => 3)
 
     chart = OFC2::Graph.new
     chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
@@ -301,8 +298,7 @@ class ChartsOfc2Controller < ApplicationController
     x = OFC2::XAxis.new
     x.set_labels x_labels
 
-    y = OFC2::YAxis.new
-    y.set_range(0, 12, 3)
+    y = OFC2::YAxis.new(:min => 0, :max => 12, :steps => 3)
 
     chart = OFC2::Graph.new
     chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
@@ -841,11 +837,7 @@ class ChartsOfc2Controller < ApplicationController
 
     chart.tooltip = tooltip
 
-    y = OFC2::YAxis.new
-    y.set_range(0, max, max/2)
-    y.min = 0
-    y.max = max
-    y.steps = max/2
+    y = OFC2::YAxis.new(:min => 0, :max => max, :steps => max/2)
 
     chart.y_axis= y
 
@@ -854,6 +846,37 @@ class ChartsOfc2Controller < ApplicationController
     render :text => chart.render
   end
   #mix_advanced_tooltip_end
+
+  #mix_advanced_scaled_axis_begin
+  def mix_advanced_scaled_axis
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    line_dot = OFC2::Line.new( :values => [9,8,7,6,5,4,3,2,1,12] )
+    chart = OFC2::Graph.new
+    chart.title= title
+
+    x_labels = OFC2::XAxisLabels.new
+    #        x_labels.rotate= 'vertical'
+    x_labels.rotate= 'diagonal'
+
+
+    x = OFC2::XAxis.new
+    x.colour= '#D7E4A3'
+    x.grid_colour= '#A7E4A3'
+    # Add the X Axis Labels to the X Axis
+    x.labels= x_labels
+
+    y_axis = OFC2::YAxis.new(:min => 0, :max => 20)
+    y_axis.colour= '#AAAA00'
+    y_axis.grid_colour= '#00FFF0'
+
+    chart.x_axis= x
+    chart.y_axis= y_axis
+    chart.y_axis_right= y_axis
+
+    chart << line_dot
+    render :text => chart.render
+  end
+  #mix_advanced_scaled_axis_end
 
   #mix_advanced_legends_begin
   def mix_advanced_legends
@@ -924,15 +947,12 @@ class ChartsOfc2Controller < ApplicationController
     y_legend_right = OFC2::YLegend.new( :text =>"Y right description" )
     y_legend_right.style= '{font-size: 20px; color: #887788}'
 
-    y_axis = OFC2::YAxis.new
-    #    y_axis.set_range(0, max, max/2)
+    y_axis = OFC2::YAxis.new(:min => 0, :max => max, :steps => max/2)
     y_axis.stroke= 3
-    #    y_axis.colour= '#D7E4A3'
     y_axis.colour= '#AAAA00'
-    #    y_axis.grid_colour= '#A2ACBA'
     y_axis.grid_colour= '#00FFF0'
     y_axis.tick_length= 20
-    y_axis.steps= 2
+    #    y_axis.steps= 2
     y_axis.labels= y_labels_text
 
     chart = OFC2::Graph.new
@@ -1111,7 +1131,6 @@ class ChartsOfc2Controller < ApplicationController
 
     gold = OFC2::Line.new(
       :values => [3, 4, 5, 4, 3, 3, 2.5],
-      :text =>'radar',
       :colour => '#FBB829',
       :width => 1,
       :dot_style => OFC2::HollowDot.new(:colour => '#45909F', :dot_size =>4),
@@ -1122,7 +1141,6 @@ class ChartsOfc2Controller < ApplicationController
 
     purple = OFC2::Line.new(
       :values => [2, 2, 2, 2, 2, 2, 2],
-      :text =>'radar',
       :colour => '#8000FF',
       :width => 1,
       :dot_style => OFC2::Star.new(:colour => '#8000FF', :dot_size =>4),
@@ -1173,7 +1191,6 @@ class ChartsOfc2Controller < ApplicationController
 
     line = OFC2::Line.new(
       :values => values,
-      :text =>'radar',
       :colour => '#FBB829',
       :width => 2,
       :text => "Hearts",

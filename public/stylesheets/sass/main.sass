@@ -146,6 +146,73 @@ body
   :overflow auto
   :width 100%
   :font-size 15px
+table.usual
+  :border
+    :width 1px
+    :color black
+    :style solid
+    :collapse collapse
+  :empty-cells show
+  th
+    :border
+      :width 1px
+      :color black
+      :style solid
+    :background-color #afafaf
+    :color black
+    :text-align center
+    :vertical-align center
+    :padding 2px 5px
+  td
+    :border
+      :width 1px
+      :color black
+      :style solid
+    :background-color white
+    :color black
+    :text-align center
+    :vertical-align center
+    :padding 2px 5px
+.tip
+  :color black
+  :overflow auto
+  :min-height 40px
+  :width 100%
+  :margin 2px
+  :padding 2px
+  :padding-left 40px
+  :border
+    :style solid
+    :width 1px
+    :color black
+  &.information
+    :background-color #c6c1ff
+    :background
+      :image url('/images/information.png')
+      :repeat no-repeat
+      :position center left
+  &.warning
+    :background-color #fcff9d
+    :background
+      :image url('/images/warning.png')
+      :repeat no-repeat
+      :position center left
+  &.example
+    :background-color white
+    :background
+      :image url('/images/example.png')
+      :repeat no-repeat
+      :position center left
+    .header
+      :width 100%
+      :font-weight bolder
+    .description
+      :width 100%
+    .chart
+      :width 100%
+    .code
+      :width 100%
+
 .note
   :background-color white
   :color blue

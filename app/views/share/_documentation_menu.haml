@@ -1,10 +1,27 @@
 .left_menu
-  .index.link.header{ :onclick => "activate_menu('.index');"}
-    = link_to "Documentation", { :controller=>'documentations', :action => :index}
-  .index.elements
-    //= render :partial => '/share/sublink', :locals => {:name => 'Line', :url => { :controller=>'chart_examples', :action => "line" }}
+  .main.link.header{ :onclick => "activate_menu('.main');"}
+    = render :partial => '/share/sublink', :locals => {:name => "General information", :url => { :controller=>'/documentations/main', :action => 'index'}}
+  .main.elements
+    = render :partial => '/share/sublink', :locals => {:name => "About documentation", :url => { :controller=>'/documentations/main', :action => 'index'}}
+    = render :partial => '/share/sublink', :locals => {:name => "How its's works", :url => { :controller=>'/documentations/main', :action => 'how_it_works' }}
+  .graph.link.header{ :onclick => "activate_menu('.graph');"}
+    = render :partial => '/share/sublink', :locals => {:name => "Graph", :url => { :controller=>'/documentations/graph', :action => 'index'}}
+  .graph.elements
+    = render :partial => '/share/sublink', :locals => {:name => "title", :url => { :controller => '/documentations/graph', :action => :title }}
+    = render :partial => '/share/sublink', :locals => {:name => "elements", :url => { :controller => '/documentations/graph', :action => :elements }}
+    = render :partial => '/share/sublink', :locals => {:name => "radar_axis", :url => { :controller => '/documentations/graph', :action => :radar_axis }}
+    = render :partial => '/share/sublink', :locals => {:name => "x_axis", :url => { :controller => '/documentations/graph', :action => :x_axis }}
+    = render :partial => '/share/sublink', :locals => {:name => "y_axis", :url => { :controller => '/documentations/graph', :action => :y_axis }}
+    = render :partial => '/share/sublink', :locals => {:name => "y_axis_right", :url => { :controller => '/documentations/graph', :action => :y_axis_right }}
+    = render :partial => '/share/sublink', :locals => {:name => "x_legend", :url => { :controller => '/documentations/graph', :action => :x_legend }}
+    = render :partial => '/share/sublink', :locals => {:name => "y_legend", :url => { :controller => '/documentations/graph', :action => :y_legend }}
+    = render :partial => '/share/sublink', :locals => {:name => "y2_legend", :url => { :controller => '/documentations/graph', :action => :y2_legend }}
+    = render :partial => '/share/sublink', :locals => {:name => "bg_colour", :url => { :controller => '/documentations/graph', :action => :bg_colour }}
+  .title.link.header{ :onclick => "activate_menu('.title');"}
+    = render :partial => '/share/sublink', :locals => {:name => "Title", :url => { :controller=>'/documentations/title', :action => 'index'}}
+  .title.elements
 
 - pattern = ''
-- %w(index).each do |p|
-  - pattern = '.'+p if action_name =~ /.*#{p}.*/
+- %w(main graph title).each do |p|
+  - pattern = '.'+p if controller_name =~ /.*#{p}.*/
 = javascript_tag "activate_menu('#{pattern}');"

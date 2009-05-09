@@ -1,9 +1,10 @@
-- case controller_name
-- when  'documentations'
+-# case controller_path
+- case request.url
+- when  /documentations/
   =render :partial => 'share/documentation_menu'
-- when  'infos'
+- when  /infos/
   =render :partial => 'share/infos_menu'
-- when  'chart_examples'
+- when  /chart_examples/
   =render :partial => 'share/chart_examples_menu'
-- when  'welcome'
+- when  /welcome/
   =render :partial => 'share/welcome_menu'

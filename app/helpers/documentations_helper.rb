@@ -1,2 +1,0 @@
-module DocumentationsHelper
-end

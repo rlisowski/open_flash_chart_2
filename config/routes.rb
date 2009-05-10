@@ -51,6 +51,7 @@ ActionController::Routing::Routes.draw do |map|
     documentation.resources :graph, :collection => {
       :title => :get,
       :elsements => :get,
+      :add_elsement => :get,
       :radar_axis => :get,
       :x_axis => :get,
       :y_axis  => :get,
@@ -61,5 +62,6 @@ ActionController::Routing::Routes.draw do |map|
       :bg_colour => :get,
     }
     documentation.resources :title
+    documentation.resources :xaxis
   end
 end

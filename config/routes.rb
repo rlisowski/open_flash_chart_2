@@ -61,7 +61,15 @@ ActionController::Routing::Routes.draw do |map|
       :y2_legend  => :get,
       :bg_colour => :get,
     }
-    documentation.resources :title
-    documentation.resources :xaxis
+    #    documentation.resources :title
+    #    documentation.resources :xaxis
+    PLUGIN_CLASSES.each do |plugin_class_name, actions|
+      #      collection = {}
+      #      actions.each do |plugin_action_name|
+      #        collection[plugin_action_name.to_sym] = :get
+      #      end
+      #      documentation.resources plugin_class_name.to_sym, :collection => collection
+      documentation.resources plugin_class_name.to_sym
+    end
   end
 end

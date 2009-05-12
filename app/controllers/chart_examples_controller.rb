@@ -70,7 +70,7 @@ end
 # notice that instead url (like was in another examples) we set an chart object
 # @graph = ofc2_inline(650,300,chart,'inline_line')
 # the 4th parameter is id, if you not set it, it will be automaticaly generated
-# avery inline chart generated on the same page must have unique id!
+# every inline chart generated on the same page must have unique id!
 
 # ok, we have controller and action, now display graph in a view for that action
 # for this tiny example it is app/views/charts/inline_line.html.erb
@@ -119,7 +119,7 @@ end
 # notice that instead url (like was in another examples) we set an chart object
 # @graph = ofc2_inline(650,300,chart,'inline_line')
 # the 4th parameter is id, if you not set it, it will be automaticaly generated (another for each chart)
-# avery inline chart generated on the same page must have unique id!
+# every inline chart generated on the same page must have unique id!
 
 # ok, we have controller and action, now display graph in a view for that action
 # for this tiny example it is app/views/charts/inline_many_line.html.erb

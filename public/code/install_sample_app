@@ -4,12 +4,8 @@
  cd directory_path
 # clone git repo
  git clone git://github.com/korin/open_flash_chart_2.git
-# go inside project folder
- cd open_flash_chart_2/vemdor/plugins
-# clone plugin git repo to open_flash_chart_2 directory
-  git clone git://github.com/korin/open_flash_chart_2_plugin.git open_flash_chart_2
-# go to main directory
- cd ../..
+# initializ submodules
+ git submodule update --init
 # copy files from plugin_directory/requirements
 # use rake task
  rake open_flash_chart_2:reinstall

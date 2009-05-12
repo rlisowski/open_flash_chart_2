@@ -1,5 +1,5 @@
 class ChartExamplesController < ApplicationController
-  before_filter :render_chart
+  before_filter :render_chart, :except => [:index, :inline_line, :inline_many_line]
   def render_chart
     unless action_name.eql?('index') or action_name =~/^inline_.*/
       @graph = "<div>
@@ -58,20 +58,23 @@ EOF
     end
     @code =<<EOF
 # include js file on site
-  = javascript_include_tag 'swfobject.js'
+<%= javascript_include_tag 'swfobject.js' %>
 
-# in controller
-          #ofc2(width, height, url, base='/', id = '')
-  @graph = ofc2(650,300, 'charts_ofc2/#{action_name}')
+# when you use ofc2_inline method you don't neeed extra controller which serving data
 
-#in controller which is generating data for charts (for me it's charts_ofc2)
+# lets say you have a controller Charts
+class ChartsController < ApplicationController
+  # and action inline_line
   #{method_code}
+end
+# notice that instead url (like was in another examples) we set an chart object
+# @graph = ofc2_inline(650,300,chart,'inline_line')
+# the 4th parameter is id, if you not set it, it will be automaticaly generated
+# avery inline chart generated on the same page must have unique id!
 
-# display graph in view (haml)
-  =@graph
-
-# display graph in view (html.erb)
-  <%=@graph%>
+# ok, we have controller and action, now display graph in a view for that action
+# for this tiny example it is app/views/charts/inline_line.html.erb
+<%=@graph%>
 EOF
 
     render :action => "show"
@@ -104,22 +107,25 @@ EOF
     end
     @code =<<EOF
 # include js file on site
-  = javascript_include_tag 'swfobject.js'
+<%= javascript_include_tag 'swfobject.js' %>
 
-# in controller
-          #ofc2(width, height, url, base='/', id = '')
-  @graph = ofc2(650,300, 'charts_ofc2/#{action_name}')
+# when you use ofc2_inline method you don't neeed extra controller which serving data
 
-#in controller which is generating data for charts (for me it's charts_ofc2)
+# lets say you have a controller Charts
+class ChartsController < ApplicationController
+  # and action inline_many_line
   #{method_code}
+end
+# notice that instead url (like was in another examples) we set an chart object
+# @graph = ofc2_inline(650,300,chart,'inline_line')
+# the 4th parameter is id, if you not set it, it will be automaticaly generated (another for each chart)
+# avery inline chart generated on the same page must have unique id!
 
-# display graph in view (haml)
-  =@graph
-  =@graph2
+# ok, we have controller and action, now display graph in a view for that action
+# for this tiny example it is app/views/charts/inline_many_line.html.erb
+<%=@graph %>
+<%=@seccond_graph %>
 
-# display graph in view (html.erb)
-  <%=@graph%>
-  <%=@graph2%>
 EOF
     render :action => "show"
   end

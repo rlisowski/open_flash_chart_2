@@ -44,7 +44,7 @@ class ChartsOfc2Controller < ApplicationController
     chart.title= title
     chart << bar
 
-    @graph += ofc2_inline(650,300,chart,'inline_line_2')
+    @seccond_graph = ofc2_inline(650,300,chart,'inline_line_2')
   end
   #inline_many_line_end
 end

@@ -1217,4 +1217,20 @@ class ChartsOfc2Controller < ApplicationController
   end
   #radar_minimal_view_end
 
+    #mix_line_with_y_axis_begin
+  def mix_line_with_y_axis
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    line_dot = OFC2::Line.new( :values => [900,800,700,1600,2500,4000,3300,1200,100,1200] )
+
+    y_axis = OFC2::YAxis.new(:min => 0, :max => 4000, :steps => 1000)
+
+    chart = OFC2::Graph.new
+    chart.title= title
+    chart.y_axis= y_axis
+
+    chart << line_dot
+    render :text => chart.render
+  end
+  #mix_line_with_y_axis_end
+
 end

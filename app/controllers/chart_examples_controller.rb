@@ -3,7 +3,7 @@ class ChartExamplesController < ApplicationController
   def render_chart
     unless action_name.eql?('index') or action_name =~/^inline_.*/
       @graph = "<div>
-          #{ofc2(650,400, url_for( :controller => :charts_ofc2, :action =>action_name), '' )}
+          #{ofc2(650,400, url_for( :controller => :charts_ofc2, :action =>action_name), '', nil, nil, {:wmode => 'transparent'} )}
         </div>
         <div>
           <a href='/charts_ofc2/#{action_name}'>To see the data in json format click here</a>

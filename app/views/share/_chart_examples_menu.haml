@@ -4,6 +4,7 @@
   .line.elements
     = render :partial => '/share/sublink', :locals => {:name => 'Line', :url => { :controller=>'chart_examples', :action => "line" }}
     = render :partial => '/share/sublink', :locals => {:name => "Line with empty values", :url => { :controller=>'chart_examples', :action => "line_with_nills" }}
+    = render :partial => '/share/sublink', :locals => {:name => "Line with animation", :url => { :controller=>'chart_examples', :action => "line_with_animation" }}
     = render :partial => '/share/sublink', :locals => {:name => "Dot styles", :url => { :controller=>'chart_examples', :action => "lines_with_any_dot_shape" }}
     = render :partial => '/share/sublink', :locals => {:name => "Line styles", :url => { :controller=>'chart_examples', :action => "lines_with_any_line_style" }}
 

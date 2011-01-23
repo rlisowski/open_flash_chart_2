@@ -10,6 +10,23 @@ class ChartsOfc2Controller < ApplicationController
   end
   #line_end
 
+  #line_with_animation_begin
+  def line_with_animation
+    title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+    line_dot = OFC2::Line.new( :values => [9,8,7,6,5,4,3,2,1,12] )
+    line_dot.on_show = OFC2::Animation.new(
+      :type => "pop-up",
+      :cascade => 1,
+      :delay => 0.5
+    )
+
+    chart = OFC2::Graph.new
+    chart.title= title
+    chart << line_dot
+    render :text => chart.render
+  end
+  #line_with_animation_end
+
   #line_with_nills_begin
   def line_with_nills
     title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")

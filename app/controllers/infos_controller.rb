@@ -1,6 +1,6 @@
 class InfosController < ApplicationController
   def changes
-    path = "#{RAILS_ROOT}/vendor/plugins/open_flash_chart_2/CHANGES"
+    path = "#{Rails.root}/vendor/plugins/open_flash_chart_2/CHANGES"
     if File.exist?(path)
       @file =<<EOF
 #{File.read( path )}
@@ -11,7 +11,7 @@ EOF
     render :action => 'display_file'
   end
   def todo
-    path = "#{RAILS_ROOT}/vendor/plugins/open_flash_chart_2/TODO"
+    path = "#{Rails.root}/vendor/plugins/open_flash_chart_2/TODO"
     if File.exist?(path)
       @file =<<EOF
 #{File.read( path )}
@@ -22,7 +22,7 @@ EOF
     render :action => 'display_file'
   end
   def install
-    path = "#{RAILS_ROOT}/public/code/"
+    path = "#{Rails.root}/public/code/"
     @files = {}
     ['install_plugin','install_sample_app', 'copy_files'].each do |file|
       _path = path + file

@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.0'
 
+gem 'pg'
+
 gem 'haml'
 gem 'sass'
 gem 'jquery-rails'
@@ -18,11 +20,6 @@ group :assets do
   gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-end
-
-
-group :development do
-  gem 'sqlite3'
 end
 
 # To use ActiveModel has_secure_password

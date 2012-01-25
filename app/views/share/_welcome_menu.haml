@@ -1,11 +1,29 @@
 .left_menu
-  - active_class = action_name =~ /.*index.*/ ? 'active' : ''
-  .link.header{:class =>active_class }
-    = link_to "Home", { :controller=>'welcome'}
-
-//  - active_class = action_name =~ /.*how_its_work.*/ ? 'active' : ''
-//  .link.header{:class =>active_class }
-//    = link_to "How it's works", { :controller => :welcome, :action => :how_its_work}
-//  .elements
-//    .link
-//      = link_to "sublink", { :controller=>'', :action => '' }
+  - if Rails.env == "production"
+    <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-8124173476627883";
+    /* home left */
+    google_ad_slot = "1740889411";
+    google_ad_width = 180;
+    google_ad_height = 90;
+    //-->
+    </script>
+    = javascript_include_tag "http://pagead2.googlesyndication.com/pagead/show_ads.js"
+    <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-8124173476627883";
+    /* home left 1 */
+    google_ad_slot = "6343519884";
+    google_ad_width = 180;
+    google_ad_height = 90;
+    //-->
+    </script>
+    = javascript_include_tag "http://pagead2.googlesyndication.com/pagead/show_ads.js"
+    <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-8124173476627883";
+    /* home left 2 */
+    google_ad_slot = "5750855276";
+    google_ad_width = 180;
+    google_ad_height = 90;
+    //-->
+    </script>
+    = javascript_include_tag "http://pagead2.googlesyndication.com/pagead/show_ads.js"

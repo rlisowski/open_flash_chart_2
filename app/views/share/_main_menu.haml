@@ -15,13 +15,14 @@
   - active_class = controller_name =~ /.*welcome.*/ ? 'active' : ''
   .link_main{:class => active_class }
     = link_to "Home", { :controller=>'/welcome'}
+
 - if Rails.env == "production"
-  :javascript
-    <!--
-    google_ad_client = "ca-pub-8124173476627883";
-    /* podmenu */
-    google_ad_slot = "1467839005";
-    google_ad_width = 728;
-    google_ad_height = 15;
-    //-->
+  <script type="text/javascript"><!--
+  google_ad_client = "ca-pub-8124173476627883";
+  /* podmenu */
+  google_ad_slot = "1467839005";
+  google_ad_width = 728;
+  google_ad_height = 15;
+  //-->
+  </script>
   = javascript_include_tag "http://pagead2.googlesyndication.com/pagead/show_ads.js"

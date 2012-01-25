@@ -72,7 +72,37 @@
 
     //  = render :partial => '/share/sublink', :locals => {:name => "Draw shape and graph", :url => { :controller=>'chart_examples', :action => "mix_advanced_shapes" }}
 
+  - if Rails.env == "production"
+    <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-8124173476627883";
+    /* home left */
+    google_ad_slot = "1740889411";
+    google_ad_width = 180;
+    google_ad_height = 90;
+    //-->
+    </script>
+    = javascript_include_tag "http://pagead2.googlesyndication.com/pagead/show_ads.js"
+    <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-8124173476627883";
+    /* home left 1 */
+    google_ad_slot = "6343519884";
+    google_ad_width = 180;
+    google_ad_height = 90;
+    //-->
+    </script>
+    = javascript_include_tag "http://pagead2.googlesyndication.com/pagead/show_ads.js"
+    <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-8124173476627883";
+    /* home left 2 */
+    google_ad_slot = "5750855276";
+    google_ad_width = 180;
+    google_ad_height = 90;
+    //-->
+    </script>
+    = javascript_include_tag "http://pagead2.googlesyndication.com/pagead/show_ads.js"
+
 - pattern = ''
 - %w(line bar pie scatter area radar inline mix).each do |p|
   - pattern = '.'+p if action_name =~ /.*#{p}.*/
 = javascript_tag "activate_menu('#{pattern}');"
+

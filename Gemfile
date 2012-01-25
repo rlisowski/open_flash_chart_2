@@ -8,7 +8,7 @@ gem 'haml'
 gem 'sass'
 gem 'jquery-rails'
 
-gem 'ofc2'
+gem 'ofc2' #, git: 'git://github.com/korin/open_flash_chart_2_plugin.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

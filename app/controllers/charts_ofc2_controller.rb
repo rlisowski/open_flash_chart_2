@@ -1,6 +1,7 @@
 class ChartsOfc2Controller < ApplicationController
   #line_begin
   def line
+    # title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
     line_dot = OFC2::Line.new( :values => [9,8,7,6,5,4,3,2,1,12] )
     chart = OFC2::Graph.new

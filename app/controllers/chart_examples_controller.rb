@@ -5,7 +5,7 @@ class ChartExamplesController < ApplicationController
       send(params[:graph_action].to_sym)
     else
       @graph = "<div>
-          #{ofc2(650,400, url_for( :controller => :charts_ofc2, :action =>params[:graph_action]), '', Time.now.usec, '/', {:wmode => 'transparent'} )}
+          #{ofc2(650,400, url_for( :controller => :charts_ofc2, :action =>params[:graph_action]), Time.now.usec )}
         </div>
         <div>
           <a href='/charts_ofc2/#{params[:graph_action]}'>To see the data in json format click here</a>
@@ -17,18 +17,18 @@ class ChartExamplesController < ApplicationController
         method_code =  $2 if $2
       end
       @code =<<-EOF
-        # include js file on site
-          = javascript_include_tag 'swfobject.js'
+# include js file on site
+  = javascript_include_tag 'swfobject.js'
 
-        # in controller
-                  #ofc2(width, height, url, base='/', id = '')
-          @graph = ofc2(650,300, 'charts_ofc2/#{params[:graph_action]}')
+# in controller
+  #ofc2(width, height, url, id =Time.now.usec, flash_attributes = {}, flash_params = {})
+  @graph = ofc2(650,300, 'charts_ofc2/#{params[:graph_action]}')
 
-        #in controller which is generating data for charts (for me it's charts_ofc2)
-          #{method_code}
+#in controller which is generating data for charts (for me it's charts_ofc2)
+  #{method_code}
 
-        # display graph in view (haml)
-          =@graph
+# display graph in view (haml)
+  =@graph
       EOF
       render :action => "show"
     end

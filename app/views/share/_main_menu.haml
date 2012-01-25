@@ -10,7 +10,7 @@
 
   - active_class = controller_name =~ /.*chart_examples.*/ ? 'active' : ''
   .link_main{:class => active_class }
-    = link_to "Charts", { :controller=>'/chart_examples', :action => :line}
+    = link_to "Charts", { :controller=>'/chart_examples', :action => :index}
 
   - active_class = controller_name =~ /.*welcome.*/ ? 'active' : ''
   .link_main{:class => active_class }

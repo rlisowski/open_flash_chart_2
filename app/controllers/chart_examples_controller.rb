@@ -4,10 +4,10 @@ class ChartExamplesController < ApplicationController
     if params[:graph_action].eql?('index') or params[:graph_action] =~/^inline_.*/
       send(params[:graph_action].to_sym)
     else
-      @graph = "<div>
+      @graph = "<div class=\"chart\">
           #{ofc2(650,400, url_for( :controller => :charts_ofc2, :action =>params[:graph_action]), Time.now.usec )}
         </div>
-        <div>
+        <div class=\"data-link\">
           <a href='/charts_ofc2/#{params[:graph_action]}'>To see the data in json format click here</a>
         </div>
       "

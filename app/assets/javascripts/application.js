@@ -6,3 +6,10 @@
 //= require syntaxhighlighter/shBrushPlain
 //= require syntaxhighlighter/shBrushXml
 //= require_self
+
+
+$(function(){
+  $('.header_text').click(function(){
+    window.location.href = '/';
+  });
+});

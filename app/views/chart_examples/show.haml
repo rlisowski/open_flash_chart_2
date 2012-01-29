@@ -1,7 +1,10 @@
 %h3
   = "#{@name} chart"
+  .g-plusone{data: { annotation: "inline", width: "120" } }
+  -# .fb-like{ data: { send: "false", width: "120", :"show-faces" => "false", font: "arial", layout: "button_count" }}
 
 = raw @graph
+
 
 .code_example
   %pre{:class => "brush: ruby;"}=@code

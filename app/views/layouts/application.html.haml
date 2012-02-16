@@ -1,5 +1,14 @@
 %html{ html_attrs('en-us')}
   %head{ :name => "Open Flash Chart 2 Rails Plugin"}
+    :plain
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=234231239933886";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
     %title Open Flash Chart 2 Rails Plugin
     %meta{:name=>'verify-v1', :content=>'tYalPR5Y3sLQLP3wHs44Ohc2P5ddwDrV/hYpOsXyQjQ='}
     %meta{:name=>"description", :content=>"This site is about open flash chart rails plugin based on open flash chart project version 2."}
@@ -55,12 +64,4 @@
       })();
 
     #fb-root
-    :plain
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=234231239933886";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
 

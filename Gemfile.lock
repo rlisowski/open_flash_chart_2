@@ -55,7 +55,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.0.4)
-    ofc2 (2.0.1)
+    ofc2 (2.0.2)
     pg (0.12.2)
     polyglot (0.3.3)
     rack (1.4.1)

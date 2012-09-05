@@ -934,11 +934,10 @@ class ChartsOfc2Controller < ApplicationController
 
 
     x_labels = OFC2::XAxisLabels.new
-    #    x_labels.steps= 1
-    x_labels.rotate= 'vertical'
+    # x_labels.steps= 1
     x_labels.rotate= 'diagonal'
-    #    x_labels.colour = '#FF2ACB'
-    #    x_labels.size = 12
+    # x_labels.colour = '#FF2ACB'
+    # x_labels.size = 12
 
     x_labels_text[7] = OFC2::XAxisLabel.new(:text => '7', :colour => '#0000FF', :size => 20, :rotate => 90)
     x_labels_text[8] = OFC2::XAxisLabel.new(:text => 'eight', :colour => '#8C773E', :size => 16, :rotate => 70)
@@ -958,6 +957,13 @@ class ChartsOfc2Controller < ApplicationController
     x_legend = OFC2::XLegend.new( :text => "labels from 0 to #{max}" )
     x_legend.style= '{font-size: 20px; color: #FF8877}'
 
+
+
+    y_labels = OFC2::YAxisLabels.new
+    y_labels.colour = '#FF00FF'
+    y_labels.size = 10
+    y_labels.labels= y_labels_text
+
     y_legend = OFC2::YLegend.new( :text =>"Y description" )
     y_legend.style= '{font-size: 20px; color: #778877}'
 
@@ -970,7 +976,7 @@ class ChartsOfc2Controller < ApplicationController
     y_axis.grid_colour= '#00FFF0'
     y_axis.tick_length= 20
     #    y_axis.steps= 2
-    y_axis.labels= y_labels_text
+    y_axis.labels= y_labels
 
     chart = OFC2::Graph.new
     chart.title= title

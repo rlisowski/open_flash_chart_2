@@ -1256,4 +1256,34 @@ class ChartsOfc2Controller < ApplicationController
   end
   #mix_line_with_y_axis_end
 
+  #on_click_begin
+  def on_click
+    title = OFC2::Title.new(
+      :text => action_name.humanize ,
+      :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
+
+    default_dot = OFC2::Dot.new(
+      :colour => '#FF0000',
+      :dot_size => 10,
+      :halo_size =>12,
+      :on_click=>"alert('default dot')" )
+
+    special_dot = OFC2::Star.new(
+      :colour => '#FF0000',
+      :dot_size => 10,
+      :halo_size =>12,
+      :y =>  2,
+      :on_click=>"alert('special dot')" )
+
+    line = OFC2::Line.new(
+      :values => [9,8,7,6,5,4,3,special_dot,1,12],
+      :dot_style => default_dot  )
+
+    chart = OFC2::Graph.new
+    chart.title= title
+    chart << line
+    render :text => chart.render
+  end
+  #on_click_end
+
 end

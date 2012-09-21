@@ -6,13 +6,3 @@
     = render :partial => '/share/sublink', :locals => {:name => "TODO", :url => { :action => "todo" }}
     = render :partial => '/share/sublink', :locals => {:name => "Related projects", :url => { :action => "related_project" }}
     = render :partial => '/share/sublink', :locals => {:name => "How download / install", :url => { :action => "install" }}
-  - if Rails.env == "production"
-    <script type="text/javascript"><!--
-    google_ad_client = "ca-pub-8124173476627883";
-    /* charts_menu */
-    google_ad_slot = "7028984322";
-    google_ad_width = 160;
-    google_ad_height = 600;
-    //-->
-    </script>
-    = javascript_include_tag "http://pagead2.googlesyndication.com/pagead/show_ads.js"

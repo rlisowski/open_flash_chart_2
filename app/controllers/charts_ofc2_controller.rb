@@ -331,7 +331,7 @@ class ChartsOfc2Controller < ApplicationController
   def horizontal_bar
     data = []
     0.upto(2) do |i|
-      data << OFC2::HBarValue.new(:left => 2 + i, :right => 5 + i)
+      data << OFC2::HBarValue.new(y: i, :left => i, :right => 5 + i, value: i)
     end
 
     bar = OFC2::HBar.new
@@ -344,11 +344,18 @@ class ChartsOfc2Controller < ApplicationController
     x = OFC2::XAxis.new
     x.labels = x_labels
 
-
-
     y = OFC2::YAxis.new
-    y.offset = true
-    y.labels = ["Make garden look sexy","Paint house","Move into house"]
+    y.offset = 1
+    y.max = 2
+
+    y_labels = OFC2::YAxisLabels.new
+    y_labels.size = 12
+    y_labels.colour = '#0000FF'
+    y_labels.labels= [
+      "Make garden look sexy",
+      OFC2::YAxisLabel.new(y: 1, :text => "Paint house", :colour => '#0000FF', :size => 20, :rotate => 90),
+      "Move into house"]
+    y.labels= y_labels
 
     chart = OFC2::Graph.new
     chart.title = OFC2::Title.new( :text => action_name.humanize , :style => "{font-size: 14px; color: #b50F0F; text-align: center;}")
